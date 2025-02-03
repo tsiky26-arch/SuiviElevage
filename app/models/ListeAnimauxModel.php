@@ -13,12 +13,13 @@ class ListeANimauxModels{
     {
         try {
             $this->db = Flight::db();
+            $statut= 'eleve';
 
-            $query = "SELECT * FROM elevage_AnimauxEleves WHERE idUtilisateur = ?";
-            
+            $query = "SELECT * FROM elevage_AnimauxEleves WHERE idUtilisateur = ? AND statut = ?";
             $stmt = $this->db->prepare($query);
     
             $stmt->bindValue(1,$idU);
+            $stmt->bindValue(2,$statut);
 
             
             $stmt->execute();
