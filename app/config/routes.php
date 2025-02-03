@@ -3,12 +3,13 @@
 use flight\Engine;
 use flight\net\Router;
 
-use app\controllers\InscriptionController;
 use app\controllers\LoginController;
 use app\controllers\AcceuilController;
-use app\controllers\AjouterCapitalController;
-use app\controllers\ListeAnimauxController;
+use app\controllers\AccueilController;
+use app\controllers\InscriptionController;
 use app\controllers\AchatAnimauxController;
+use app\controllers\ListeAnimauxController;
+use app\controllers\AjouterCapitalController;
 
 /** 
  * @var Router $router 

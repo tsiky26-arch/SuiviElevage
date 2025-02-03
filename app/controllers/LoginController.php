@@ -2,8 +2,8 @@
 namespace app\controllers;
 
 use Flight;
-// use app\models\LoginModel;
-session_start();
+use app\models\LoginModel;
+// session_start();
 
 class LoginController {
     public function __construct() {
@@ -20,7 +20,7 @@ class LoginController {
         if($user == NULL) {
             Flight::render('/', ['erreur' => 'Veuillez verifier les informations saisies']);
         } else {
-            $_SESSION['user'] = $user;
+            // $_SESSION['user'] = $user;
             Flight::redirect('accueil');
         }
     }
