@@ -1,41 +1,44 @@
-<?php
-
+<?php 
 namespace app\models;
+use Flight ;
 
-use Flight;
-
-class LoginModel { 
+class ListeANimauxModels{
     private $db;
 
-    public function __construct() {
+     public function __construct() {
         
     }
 
-    public function getUser($email, $mdp) {
+    public function getAllAnimauxById($idU)
+    {
         try {
             $this->db = Flight::db();
 
-            $query = "SELECT * FROM elevage_utilisateurs WHERE email = ? AND motDePasse = ?";
+            $query = "SELECT * FROM elevage_AnimauxEleves WHERE idUtilisateur = ?";
             
             $stmt = $this->db->prepare($query);
     
-            $stmt->bindValue(1,$email);
-            $stmt->bindValue(2,$mdp);
+            $stmt->bindValue(1,$idU);
 
             
             $stmt->execute();
             
         } catch (Exception $e) {
-            echo "erreur de connexion " .$e->getMessage();
+            echo "une erreur c'est produite" .$e->getMessage();
         }
         if($this->db != null) {
 
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
         }
         else {
-            echo "erreur de connexion";
+            echo "Aucun animal a afficher";
         }
 
         return $data;
     }
+
 }
+
+
+
+?>
