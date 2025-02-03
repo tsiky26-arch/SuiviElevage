@@ -10,12 +10,12 @@
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
 
   <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
   <!--
     - google font link
@@ -25,12 +25,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!--
-    - preload images
+    - preload img
   -->
-  <!-- <link rel="preload" as="image" href="./assets/images/logo.png"> -->
-  <link rel="preload" as="image" href="./assets/images/farm.jpg">
-  <link rel="preload" as="image" href="./assets/images/farm1.jpg">
-  <link rel="preload" as="image" href="./assets/images/farm1.jp1g">
+  <!-- <link rel="preload" as="image" href="assets/img/logo.png"> -->
+  <link rel="preload" as="image" href="assets/img/farm.jpg">
+  <link rel="preload" as="image" href="assets/img/farm1.jpg">
+  <link rel="preload" as="image" href="assets/img/farm1.jp1g">
 
 </head>
 
@@ -65,16 +65,16 @@
         </div>
 
         <!-- <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="179" height="26" alt="FermePro">
+          <img src="assets/img/logo.png" width="179" height="26" alt="FermePro">
         </a> -->
 
         <div class="header-actions">
 
-          <button class="header-action-btn" aria-label="user" onclick="window.location.href='/profil'">
+          <!-- <button class="header-action-btn" aria-label="user" onclick="window.location.href='/'">
             <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-          </button>
+          </button> -->
 
-          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='/profil'">
+          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='/ajoutCapital'">
             <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
             <span class="btn-badge">0</span>
@@ -98,20 +98,18 @@
             </li>
 
             <li>
-              <a href="#collection" class="navbar-link has-after">Nos Animaux</a>
+              <a href="listeAnimaux" class="navbar-link has-after">Nos Animaux</a>
             </li>
 
             <li>
-              <a href="#shop" class="navbar-link has-after">Boutique</a>
+              <a href="" class="navbar-link has-after">Achats</a>
             </li>
 
             <li>
-              <a href="#offer" class="navbar-link has-after">Offres</a>
+              <a href="" class="navbar-link has-after">Ventes</a>
             </li>
 
-            <li>
-              <a href="#blog" class="navbar-link has-after">Blog</a>
-            </li>
+            
 
           </ul>
         </nav>
@@ -130,7 +128,7 @@
 
       <!-- <div class="wrapper">
         <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="179" height="26" alt="FermePro">
+          <img src="assets/img/logo.png" width="179" height="26" alt="FermePro">
         </a>
 
         <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
@@ -180,7 +178,7 @@
           <ul class="has-scrollbar">
 
             <li class="scrollbar-item">
-              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/farm.jpg')">
+              <div class="hero-card has-bg-image" style="background-image: url('assets/img/farm.jpg')">
 
                 <div class="card-content">
 
@@ -195,7 +193,7 @@
 
                   <p class="price">À partir de $7.99</p>
 
-                  <a href="#" class="btn btn-primary">Acheter Maintenant</a>
+                  <a href="listeAnimaux" class="btn btn-primary">Acheter Maintenant</a>
 
                 </div>
 
@@ -203,7 +201,7 @@
             </li>
 
             <li class="scrollbar-item">
-              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/farm1.jpg')">
+              <div class="hero-card has-bg-image" style="background-image: url('assets/img/farm1.jpg')">
 
                 <div class="card-content">
 
@@ -218,7 +216,7 @@
 
                   <p class="price">À partir de $7.99</p>
 
-                  <a href="#" class="btn btn-primary">Acheter Maintenant</a>
+                  <a href="listeAnimaux" class="btn btn-primary">Acheter Maintenant</a>
 
                 </div>
 
@@ -226,7 +224,7 @@
             </li>
 
             <li class="scrollbar-item">
-              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/farm2.jpg')">
+              <div class="hero-card has-bg-image" style="background-image: url('assets/img/farm2.jpg')">
 
                 <div class="card-content">
 
@@ -241,7 +239,7 @@
 
                   <p class="price">À partir de $7.99</p>
 
-                  <a href="#" class="btn btn-primary">Acheter Maintenant</a>
+                  <a href="listeAnimaux" class="btn btn-primary">Acheter Maintenant</a>
 
                 </div>
 
@@ -392,10 +390,10 @@
             </div>
 
             <a href="#" class="logo">
-              <img src="./assets/images/logo.png" width="179" height="26" loading="lazy" alt="FermePro">
+              <img src="assets/img/logo.png" width="179" height="26" loading="lazy" alt="FermePro">
             </a>
 
-            <img src="./assets/images/pay.png" width="313" height="28" alt="tous les modes de paiement disponibles" class="w-100">
+            <img src="assets/img/pay.png" width="313" height="28" alt="tous les modes de paiement disponibles" class="w-100">
 
           </div>
 
@@ -413,7 +411,7 @@
       <!--
         - custom js link
       -->
-      <script src="./assets/js/script.js" defer></script>
+      <script src="assets/js/script.js" defer></script>
 
       <!--
         - ionicon link

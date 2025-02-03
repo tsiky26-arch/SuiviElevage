@@ -22,13 +22,15 @@ CREATE TABLE elevage_Categories(
 CREATE TABLE elevage_AnimauxEleves(
     idAnimaux INT AUTO_INCREMENT PRIMARY KEY,
     idCategorie INT,
+    idUtilisateur INT,
     nom VARCHAR(200),
     poidsVariable DECIMAL(10,2),
     poidsInitiale DECIMAL(10,2),
     statut ENUM ('VENDU', 'ELEVE') NOT NULL,
     etat ENUM ('MORT', 'VIVANT'),
     image VARCHAR(200),
-    FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie)
+    FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie),
+    FOREIGN KEY (idUtilisateur) REFERENCES elevage_Utilisateurs(idUtilisateur)
 );
 
 CREATE TABLE elevage_HistoriquePoids(
