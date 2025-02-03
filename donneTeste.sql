@@ -12,10 +12,10 @@ INSERT INTO elevage_Categories (categorie, nbjSManger, pertePoidsj, poidsMin, po
 
 -- Insérer des animaux élevés
 INSERT INTO elevage_AnimauxEleves (idCategorie, idUtilisateur, nom, poidsVariable, poidsInitiale, statut, etat, image) VALUES
-(1, 1, 'Poussin 1', 1.5, 1.5, 'ELEVE', 'VIVANT', 'poulet1.jpg'),
-(1, 2, 'Poussin 2', 2.2, 2, 'ELEVE', 'VIVANT', 'poulet2.jpg'),
-(2, 1, 'Canard 1', 3.5, 3, 'VENDU', 'VIVANT', 'canard1.jpg'),
-(3, 3, 'Porc 1', 25, 20, 'ELEVE', 'VIVANT', 'porc1.jpg');
+(1, 1, 'Poussin 1', 1.5, 1.5, 'ELEVE', 'VIVANT', '/assets/img/Volaille/Poules/images.jpeg'),
+(1, 2, 'Poussin 2', 2.2, 2, 'ELEVE', 'VIVANT', '/assets/img/Volaille/Poules/téléchargement.jpeg'),
+(2, 1, 'Canard 1', 3.5, 3, 'VENDU', 'VIVANT', '/assets/img/Volaille/Canards/images.jpeg'),
+(3, 3, 'Porc 1', 25, 20, 'ELEVE', 'VIVANT', '/assets/img/Mammifere/Cochon/images.jpeg');
 
 -- Insérer des historiques de poids
 INSERT INTO elevage_HistoriquePoids (date, idAnimaux, poidsAjouter, poidsNouveau) VALUES

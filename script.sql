@@ -96,6 +96,8 @@ CREATE TABLE elevage_HistoriqueAlimentations(
     idUtilisateur INT,
     idCategorie INT,
     quantite DECIMAL(10,2),
+    idAliment INT ,
+    FOREIGN KEY (idAliment) REFERENCES elevage_Aliments(idAliment),
     FOREIGN KEY (idUtilisateur) REFERENCES elevage_Utilisateurs(idUtilisateur),
     FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie)
 );
