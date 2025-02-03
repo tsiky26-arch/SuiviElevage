@@ -15,6 +15,8 @@ class ListeAnimauxModel{
             $this->db = Flight::db();
             $statut= 'eleve';
 
+            $idU = (String) $idU;
+
             $query = "SELECT * FROM elevage_AnimauxEleves WHERE idUtilisateur = ? AND statut = ?";
             $stmt = $this->db->prepare($query);
     

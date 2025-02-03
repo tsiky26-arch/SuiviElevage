@@ -98,15 +98,15 @@
             </li>
 
             <li>
-              <a href="listeAnimaux" class="navbar-link has-after">Nos Animaux</a>
+              <a href="achatAliment" class="navbar-link has-after">Achat Aliment</a>
             </li>
 
             <li>
-              <a href="" class="navbar-link has-after">Achats</a>
+              <a href="achatAnimaux" class="navbar-link has-after">Achats</a>
             </li>
 
             <li>
-              <a href="" class="navbar-link has-after">Ventes</a>
+              <a href="venteAnimaux" class="navbar-link has-after">Ventes</a>
             </li>
 
             
@@ -193,7 +193,7 @@
 
                   <p class="price">À partir de $7.99</p>
 
-                  <a href="listeAnimaux" class="btn btn-primary">Acheter Maintenant</a>
+                  <a href="listeAnimaux" class="btn btn-primary">Voir la liste des animaux</a>
 
                 </div>
 
