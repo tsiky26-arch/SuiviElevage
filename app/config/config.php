@@ -71,7 +71,7 @@ return [
 	'database' => [
 		// uncomment the below 4 lines for mysql
 		 'host' => 'localhost',
-		 'dbname' => '',
+		 'dbname' => 'db_ETU003277',
 		 'user' => 'root',
 		 'password' => ''
 
