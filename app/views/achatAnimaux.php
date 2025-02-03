@@ -1,7 +1,3 @@
-<?php
-  echo var_dump(@$animaux);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FermePro - Gestion d'Élevage d'Animaux</title>
 
+  <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
 
+  <!-- Custom CSS Link -->
   <link rel="stylesheet" href="assets/css/listeAnimaux.css">
 
+  <!-- Google Font Link -->
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body id="top">
+  <!-- HEADER -->
   <header class="header">
     <nav class="navbar">
       <ul class="navbar-list">
@@ -31,13 +31,17 @@
   </header>
 
   <main>
-    <section class="cards-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 40px;">
+    <section class="cards-grid">
       <?php foreach ($animaux as $animal): ?>
         <div class="card">
           <img src="<?= $animal['image'] ?>" alt="Image de <?= $animal['nom'] ?>">
           <div class="card-overlay">
             <h2><?= $animal['nom'] ?></h2>
-            <p>Poids: <?= $animal['poidsInitiale'] ?></p>
+            <div class="card-details">
+              <p class="details-item">Poids total: kg</p>
+              <p class="details-item">Prix total: €</p>
+            </div>
+            <a href="" class="btn-acheter">Acheter</a>
           </div>
         </div>
       <?php endforeach; ?>
@@ -51,4 +55,3 @@
   <script src="assets/js/script.js" defer></script>
 </body>
 </html>
-
