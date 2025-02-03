@@ -18,13 +18,15 @@ class AchatAnimauxController {
     public function listerAnimauxAAcheter() {
         $achatAnimauxModel = new AchatAnimauxModel();
 
-        $animauxAAcheter = $achatAnimauxModel->getAllAnimauxAAcheter();
+        $animauxAAcheter = $achatAnimauxModel->getAllAnimauxAVendre();
 
         foreach ($animauxAAcheter as $key => $animalAAcheter) {
-            $animalAAcheter['prixTotal'] = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitial'], $animalAAcheter['prixVente']);
+            $prixTotal[] = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitiale'], $animalAAcheter['prixVente']);
         }
 
-        Flight::render('achatAnimaux', ['animauxAAcheter' => $animalAAcheter]);
+        Flight::render('achatAnimaux', ['animauxAAcheter' => $animalAAcheter, 'prixTotal' => $prixTotal]);
+        // echo var_dump($prixTotal); echo '                              ';
+        // echo var_dump($animauxAAcheter);
 
     }
 

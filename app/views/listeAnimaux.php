@@ -1,6 +1,4 @@
-<?php
-  echo var_dump(@$animaux);
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

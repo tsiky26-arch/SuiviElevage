@@ -1,3 +1,7 @@
+<?php
+  @$animauxAAcheter;
+  @$prixTotal;
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -12,7 +12,7 @@ class AchatAnimauxModel{
         try {
             $this->db = Flight::db();
            
-            $query = "SELECT * FROM view_AnimauxAVendredre" ;
+            $query = "SELECT * FROM view_AnimauxAVendre" ;
             
             $stmt = $this->db->prepare($query);
       
@@ -22,7 +22,7 @@ class AchatAnimauxModel{
         } catch (\Exception $e) {
             echo "une erreur c'est produite" .$e->getMessage();
         }
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
       } 
       public function updateCapital($montant, $idU)
       {
@@ -31,8 +31,8 @@ class AchatAnimauxModel{
               $stmt = $pdo->prepare($query);
               
               // Utilisation de bindValue avec des "?"
-              $stmt->bindValue(1, $montant, PDO::PARAM_INT);
-              $stmt->bindValue(2, $idU, PDO::PARAM_INT);
+              $stmt->bindValue(1, $montant, \PDO::PARAM_INT);
+              $stmt->bindValue(2, $idU, \PDO::PARAM_INT);
               
               if ($stmt->execute()) {
                   return "Capital mis à jour avec succès.";
@@ -77,10 +77,10 @@ class AchatAnimauxModel{
         $stmt = $pdo->prepare($query);
         
         // Liaison des paramètres avec bindValue
-        $stmt->bindValue(1, $idAnimaux, PDO::PARAM_INT);  // ID de l'animal acheté
-        $stmt->bindValue(2, $dateAchat, PDO::PARAM_STR);  // Date d'achat
-        $stmt->bindValue(3, $idUtilisateur, PDO::PARAM_INT);  // ID de l'utilisateur
-        $stmt->bindValue(4, $montant, PDO::PARAM_DECIMAL);  // Montant de l'achat
+        $stmt->bindValue(1, $idAnimaux, \PDO::PARAM_INT);  // ID de l'animal acheté
+        $stmt->bindValue(2, $dateAchat, \PDO::PARAM_STR);  // Date d'achat
+        $stmt->bindValue(3, $idUtilisateur, \PDO::PARAM_INT);  // ID de l'utilisateur
+        $stmt->bindValue(4, $montant, \PDO::PARAM_DECIMAL);  // Montant de l'achat
         
         if ($stmt->execute()) {
             return "Historique d'achat inséré avec succès.";
