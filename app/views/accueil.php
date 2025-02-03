@@ -15,7 +15,7 @@
   <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/accueil.css">
 
   <!--
     - google font link
@@ -74,7 +74,7 @@
             <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
           </button> -->
 
-          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='/ajoutCapital'">
+          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
             <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
             <span class="btn-badge">0</span>
