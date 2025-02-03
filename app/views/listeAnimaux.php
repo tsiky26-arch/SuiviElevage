@@ -35,10 +35,6 @@
           <span class="line line-3"></span>
         </button>
 
-        <div class="input-wrapper">
-          <input type="search" name="search" class="search-field" value="Capital">
-        </div>
-
         <div class="header-actions">
           <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
             <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
@@ -65,118 +61,31 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Bienvenue sur notre site professionnel</h1>
-      <p>Découvrez nos services et nos solutions adaptées à vos besoins.</p>
-    </section>
     <section class="cards-grid">
-      <div class="card">
-        <img src="assets/images/banner-1.jpg" alt="Service 1">
-        <div class="card-overlay">
-          <h2>Service 1</h2>
-          <p>Poids: 100 kg</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets/images/banner-2.jpg" alt="Service 2">
-        <div class="card-overlay">
-          <h2>Service 2</h2>
-          <p>Poids: 150 kg</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets/images/blog-1.jpg" alt="Service 3">
-        <div class="card-overlay">
-          <h2>Service 3</h2>
-          <p>Poids: 200 kg</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets/images/blog-2.jpg" alt="Service 4">
-        <div class="card-overlay">
-          <h2>Service 4</h2>
-          <p>Poids: 250 kg</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets/images/blog-2.jpg" alt="Service 5">
-        <div class="card-overlay">
-          <h2>Service 5</h2>
-          <p>Poids: 300 kg</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="assets/images/blog-2.jpg" alt="Service 6">
-        <div class="card-overlay">
-          <h2>Service 6</h2>
-          <p>Poids: 350 kg</p>
-        </div>
-      </div>
+            <?php foreach ($Animaux as $animal): ?>
+                <div class="card">
+                    <img src="<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['nom']); ?>">
+                    <div class="card-overlay">
+                        <h2><?php echo htmlspecialchars($animal['nom']); ?></h2>
+                        <p>Poids: <?php echo htmlspecialchars($animal['poidsInitiale']); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
     </section>
-  </main>
+</main>
+<footer>
+    <p>&copy; ETU003276  &   ETU003277   &    ETU003372</p>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="footer" data-section>
-    <div class="container">
-      <div class="footer-top">
-        <ul class="footer-list">
-          <li><p class="footer-list-title">ETU003276</p></li>
-          <li><p class="footer-list-text">Trouvez une ferme près de chez vous. Voir <a href="#" class="link">Nos Fermes</a></p></li>
-          <li><p class="footer-list-text bold">+391 (0)35 2568 4593</p></li>
-          <li><p class="footer-list-text">contact@fermepro.com</p></li>
-        </ul>
-        <ul class="footer-list">
-          <li><p class="footer-list-title">ETU003277</p></li>
-          <li><a href="#" class="footer-link">Nouveaux Produits</a></li>
-          <li><a href="#" class="footer-link">Meilleures Ventes</a></li>
-          <li><a href="#" class="footer-link">Offres Groupées</a></li>
-          <li><a href="#" class="footer-link">Carte Cadeau en Ligne</a></li>
-        </ul>
-        <ul class="footer-list">
-          <li><p class="footer-list-title">ETU003372</p></li>
-          <li><a href="#" class="footer-link">Démarrer un Retour</a></li>
-          <li><a href="#" class="footer-link">Contactez-Nous</a></li>
-          <li><a href="#" class="footer-link">FAQ sur la Livraison</a></li>
-          <li><a href="#" class="footer-link">Termes & Conditions</a></li>
-          <li><a href="#" class="footer-link">Politique de Confidentialité</a></li>
-        </ul>
-        <div class="footer-list">
-          <p class="newsletter-title">Bons Emails.</p>
-          <p class="newsletter-text">Entrez votre email ci-dessous pour être le premier informé des nouvelles collections et des lancements de produits.</p>
-          <form action="" class="newsletter-form">
-            <input type="email" name="email_address" placeholder="Entrez votre adresse email" required class="email-field">
-            <button type="submit" class="btn btn-primary">S'abonner</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="wrapper">
-          <p class="copyright">&copy; 2023 FermePro</p>
-          <ul class="social-list">
-            <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-            <li><a href="#" class="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
-          </ul>
-        </div>
-        <a href="#" class="logo">
-          <img src="assets/img/logo.png" width="179" height="26" loading="lazy" alt="FermePro">
-        </a>
-        <img src="assets/img/pay.png" width="313" height="28" alt="tous les modes de paiement disponibles" class="w-100">
-      </div>
-    </div>
-  </footer>
+<script src="assets/js/script.js" defer></script>
 
-  <!-- BACK TO TOP -->
-  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
-  </a>
+<!--
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <!-- Custom JS Link -->
-  <script src="assets/js/script.js" defer></script>
 
-  <!-- Ionicon Link -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+

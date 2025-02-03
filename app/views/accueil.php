@@ -61,51 +61,18 @@
   </header>
 
   <main>
-    <section class="cards-grid">
-        <div class="card">
-            <img src="assets/images/banner-1.jpg" alt="Service 1">
-            <div class="card-overlay">
-                <h2>Service 1</h2>
-                <p>Poids: 100 kg</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/banner-2.jpg" alt="Service 2">
-            <div class="card-overlay">
-                <h2>Service 2</h2>
-                <p>Poids: 150 kg</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/blog-1.jpg" alt="Service 3">
-            <div class="card-overlay">
-                <h2>Service 3</h2>
-                <p>Poids: 200 kg</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/blog-2.jpg" alt="Service 4">
-            <div class="card-overlay">
-                <h2>Service 4</h2>
-                <p>Poids: 250 kg</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/blog-2.jpg" alt="Service 5">
-            <div class="card-overlay">
-                <h2>Service 5</h2>
-                <p>Poids: 300 kg</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="assets/images/blog-2.jpg" alt="Service 6">
-            <div class="card-overlay">
-                <h2>Service 6</h2>
-                <p>Poids: 350 kg</p>
-            </div>
-        </div>
-    </section>
-</main>
+      <section class="cards-grid">
+          <?php foreach ($Animaux as $animal): ?>
+              <div class="card">
+                    <img src="<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['nom']); ?>">
+                    <div class="card-overlay">
+                        <h2><?php echo htmlspecialchars($animal['nom']); ?></h2>
+                        <p>Poids: <?php echo htmlspecialchars($animal['poids']); ?></p>
+                    </div>
+              </div>
+          <?php endforeach; ?>
+      </section>
+  </main>
 <footer>
     <p>&copy; ETU003276  &   ETU003277   &    ETU003372</p>
 </footer>
