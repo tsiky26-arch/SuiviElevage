@@ -26,7 +26,7 @@ class ListeAnimauxModel{
             
             $stmt->execute();
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo "une erreur c'est produite" .$e->getMessage();
         }
         if($this->db != null) {
