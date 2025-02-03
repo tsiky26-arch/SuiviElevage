@@ -38,8 +38,8 @@
           <div class="card-overlay">
             <h2><?= $animal['nom'] ?></h2>
             <div class="card-details">
-              <p class="details-item">Poids total: kg</p>
-              <p class="details-item">Prix total: €</p>
+              <p class="details-item">Poids total: <?= $animal['image'] ?>kg</p>
+              <p class="details-item">Prix total: <?= $animal['image'] ?>€</p>
             </div>
             <a href="" class="btn-acheter">Acheter</a>
           </div>
