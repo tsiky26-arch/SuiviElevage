@@ -37,7 +37,7 @@ $router->post('/inscription', [$inscriptionController, 'ajouterUtilisateur']);
 
 $router->post('/login', [$loginController, 'checkLogin']);
 
-$router->post('/accueil', [$accueilController, 'afficherAccueil']);
+$router->get('/accueil', [$accueilController, 'afficherAccueil']);
 
 $router->get('/ajouterCapital', [$ajouterCapitalController, 'afficherFormulaireAjoutCapital']);
 $router->get('/ajouterCapital?action=ajouter', [$ajouterCapitalController, 'ajouterCapital']);

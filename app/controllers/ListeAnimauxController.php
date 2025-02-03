@@ -12,9 +12,9 @@ class ListeAnimauxController {
     public function listerAnimaux() {
         $listeAnimauxModel = new ListeAnimauxModel();
 
-        $user = $_SESSION['user'];
+        // $user = $_SESSION['user'];
 
-        $animaux = $listeAnimauxModel->getAllAnimauxById($user['idUtilisateur']);
+        // $animaux = $listeAnimauxModel->getAllAnimauxById($user['idUtilisateur']);
         Flight::render('listeAnimaux', ['animaux' => $animaux]); 
     } 
 }

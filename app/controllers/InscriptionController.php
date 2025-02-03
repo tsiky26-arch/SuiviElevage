@@ -19,7 +19,7 @@ class InscriptionController {
         $mdp = $_POST['mdp'];
 
         $inscriptionModel = new InscriptionModel();
-        $inscriptionModel->addUser($email, $nom, $mdp);
+        $inscriptionModel->addUser($nom, $email, $mdp);
         Flight::redirect('/');
     }
 }
