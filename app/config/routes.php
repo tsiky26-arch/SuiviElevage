@@ -39,8 +39,7 @@ $router->post('/login', [$loginController, 'checkLogin']);
 
 $router->get('/accueil', [$accueilController, 'afficherAccueil']);
 
-$router->get('/ajouterCapital', [$ajouterCapitalController, 'afficherFormulaireAjoutCapital']);
-$router->get('/ajouterCapital?action=ajouter', [$ajouterCapitalController, 'ajouterCapital']);
+$router->get('/ajoutCapital', [$ajouterCapitalController, 'handleRequest']);
 
 $router->get('/listeAnimaux', [$listeAnimauxController, 'listerAnimaux']);
 

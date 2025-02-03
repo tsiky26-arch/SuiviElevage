@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajout Capital</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/ajoutCapital.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +14,7 @@
                 <img src="assets/img/tirelire.png" alt="Tirelire">
             </div>
             <h1>Ajout de Capital</h1>
-            <form action="#" method="post">
+            <form action="">
                 <div class="form-group">
                     <label for="montant">Montant :</label>
                     <input type="text" id="montant" name="montant" required>
