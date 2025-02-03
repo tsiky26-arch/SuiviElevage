@@ -64,10 +64,10 @@
     <section class="cards-grid">
             <?php foreach ($Animaux as $animal): ?>
                 <div class="card">
-                    <img src="<?php echo htmlspecialchars($animal['image']); ?>" alt="<?php echo htmlspecialchars($animal['nom']); ?>">
+                    <img src="<?= $animal['image'] ?>">
                     <div class="card-overlay">
-                        <h2><?php echo htmlspecialchars($animal['nom']); ?></h2>
-                        <p>Poids: <?php echo htmlspecialchars($animal['poidsInitiale']); ?></p>
+                        <h2><?= $animal['nom'] ?></h2>
+                        <p>Poids: <?= $animal['poidsInitiale'] ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>
