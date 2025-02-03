@@ -15,7 +15,7 @@ class AchatAnimauxController {
         return $prixTotalAnimal;
     }
     
-    public function listerAnimauxAAchete() {
+    public function listerAnimauxAAcheter() {
         $achatAnimauxModel = new AchatAnimauxModel();
 
         $animauxAAcheter = $achatAnimauxModel->getAllAnimauxAAcheter();

@@ -1,0 +1,124 @@
+/* General Styles */
+body {
+    font-family: 'Pacifico', cursive;
+    background-color: #f9f6f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-content {
+    border: 2px solid #000; /* Bordure noire */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+h1 {
+    color: #4caf50; /* Vert ferme */
+    margin-bottom: 20px;
+}
+
+/* Illustration Styles */
+.illustration {
+    margin-bottom: 20px;
+}
+
+.illustration img {
+    width: 100px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 1.2em;
+}
+
+input[type="text"] {
+    width: 60%; /* Taille réduite */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50; /* Vert ferme */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Vert ferme plus foncé */
+}
+
+/* Table Styles (if needed) */
+.table {
+    margin-bottom: 20px;
+}
+
+.table__body {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #4caf50; /* Vert ferme */
+    color: #fff;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e6e6e6;
+}
+
+a {
+    color: #4caf50; /* Vert ferme */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
