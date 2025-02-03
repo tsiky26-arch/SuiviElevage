@@ -2,7 +2,7 @@
 namespace app\models;
 use Flight;
 
-class AjoutCapital{
+class AjouterCapitalModel{
     private $db;
 
     public function __construct() {
@@ -22,7 +22,7 @@ class AjoutCapital{
             
             $stmt->execute();
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo "une erreur c'est produite" .$e->getMessage();
         }
       } 

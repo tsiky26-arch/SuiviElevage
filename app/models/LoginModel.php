@@ -25,7 +25,7 @@ class LoginModel {
             
             $stmt->execute();
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo "erreur de connexion " .$e->getMessage();
         }
         if($this->db != null) {
