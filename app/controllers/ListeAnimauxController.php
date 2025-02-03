@@ -15,7 +15,7 @@ class ListeAnimauxController {
         $user = $_SESSION['user'];
 
         $animaux = $listeAnimauxModel->getAllAnimauxById($user['idUtilisateur']);
-        // Flight::render('listeAnimaux', ['animaux' => $animaux]); 
-        echo var_dump($animaux);
+        Flight::render('listeAnimaux', ['animaux' => $animaux]); 
+        // echo var_dump($animaux);
     } 
 }

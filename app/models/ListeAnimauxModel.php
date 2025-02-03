@@ -31,7 +31,7 @@ class ListeAnimauxModel{
         }
         if($this->db != null) {
 
-            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
         else {
             echo "Aucun animal a afficher";
