@@ -50,7 +50,7 @@ nav ul li a {
     color: #777;
 }
 
-.cards-grid {
+/* .cards-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
@@ -63,7 +63,7 @@ nav ul li a {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: calc(50% - 1rem); /* Réduction de la taille des cartes */
+    width: calc(50% - 1rem);
     margin: auto;
 }
 
@@ -84,6 +84,37 @@ nav ul li a {
     opacity: 0;
     transition: opacity 0.3s ease;
     text-align: center;
+} */
+
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .card:hover .card-overlay {

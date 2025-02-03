@@ -60,19 +60,19 @@
     </div>
   </header>
 
-  <main>
-    <section class="cards-grid">
-            <?php foreach ($Animaux as $animal): ?>
-                <div class="card">
-                    <img src="<?= $animal['image'] ?>">
-                    <div class="card-overlay">
-                        <h2><?= $animal['nom'] ?></h2>
-                        <p>Poids: <?= $animal['poidsInitiale'] ?></p>
+    <main>
+        <section class="cards-grid">
+                <?php foreach ($animaux as $animal): ?>
+                    <div class="card">
+                        <img src="<?= $animal['image'] ?>">
+                        <div class="card-overlay">
+                            <h2><?= $animal['nom'] ?></h2>
+                            <p>Poids: <?= $animal['poidsInitiale'] ?></p>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-    </section>
-</main>
+                <?php endforeach; ?>
+        </section>
+    </main>
 <footer>
     <p>&copy; ETU003276  &   ETU003277   &    ETU003372</p>
 </footer>
