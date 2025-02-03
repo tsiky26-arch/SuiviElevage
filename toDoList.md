@@ -15,7 +15,7 @@
 3. Fonction
 `Login`
     Model:
-        - getUser($mdp,$email)
+        - getUser($mdp,$email) (OK)
     Controller:
         - afficherFormulaireLogin()
         - checkLogin()  -> erreur
@@ -23,7 +23,7 @@
                         -> SESSION['user']
 `Inscription`
     Model:
-        - addUser($nom,$mdp,$email)
+        - addUser($nom,$mdp,$email) (OK)
     Controller:
         - afficherFormulaireInscription()
         - ajouterUser()
@@ -49,7 +49,7 @@
 
 3. Fonction:
     Model:
-        - addCapital($id,$montant)
+        - addCapital($id,$montant) (OK)
     Controlleur:
         - afficherFormulaireAjoutCapital()
         - ajouterCapital()
@@ -69,7 +69,7 @@
 
 3. Fonction:
     Model:
-        - getAllAnimauxById($idUser)
+        - getAllAnimauxById($idUser) (OK)
     Controlleur:
         - listerAnimaux()
 
