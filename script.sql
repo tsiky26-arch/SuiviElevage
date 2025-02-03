@@ -1,3 +1,4 @@
+drop database db_ETU003277;
 CREATE DATABASE db_ETU003277;
 USE db_ETU003277;
 
