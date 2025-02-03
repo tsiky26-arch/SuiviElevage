@@ -1,28 +1,19 @@
 # Page: insription (View)
 1. Affichage: 
+`Login`
+    input:  - email/ value = Email name = email
+            - password/ value = Password name = mdp
+            - submit/ value = VALIDER
+`Inscription`
     input:  - text/ value = Nom name = nom
             - email/ value = Email name = email
             - password/ value = Password name = mdp
             - submit/ value = VALIDER
-2. Data: TABLE elevage_Utilisateurs(id_Utilisateur,nom,email,motDePasse,capital)
-3. Fonction
-    Model:
-        - addUser($nom,$mdp,$email)
-    Controller:
-        - afficherFormulaireInscription()
-        - ajouterUser()
-4. Integration:
-    Route:
-        - get('/',[inscriptionController, 'affichagerFormulaireInscription'])
-        - post('/',[inscriptionController,'ajouterUser'])
 
-# Page: Login (View)
-1. Affichage:
-    input:  - email/ value = Email name = email
-            - password/ value = Password name = mdp
-            - submit/ value = VALIDER
-2. Data:  TABLE elevage_Utilisateurs(id_Utilisateur,nom,email,motDePasse,capital)
+2. Data: TABLE elevage_Utilisateurs(id_Utilisateur,nom,email,motDePasse,capital)
+
 3. Fonction
+`Login`
     Model:
         - getUser($mdp,$email)
     Controller:
@@ -30,12 +21,24 @@
         - checkLogin()  -> erreur
                         -> redirection(ajoutCapital)
                         -> SESSION['user']
+`Inscription`
+    Model:
+        - addUser($nom,$mdp,$email)
+    Controller:
+        - afficherFormulaireInscription()
+        - ajouterUser()
 
 4. Integration:
+`Login`
     Recuperation du variable $erreur
     Route:
         - get('/login',[loginController, 'affichagerFormulaireLogin'])
         - post('/login',[loginController, 'checkLogin'])
+
+`Inscription`
+    Route:
+        - get('/',[inscriptionController, 'affichagerFormulaireInscription'])
+        - post('/',[inscriptionController,'ajouterUser'])
 
 # Page: AjoutCapital (View)
 1. Affichage:

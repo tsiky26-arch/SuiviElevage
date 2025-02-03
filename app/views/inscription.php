@@ -15,7 +15,7 @@
       <div class="forms-container">
         <div class="signin-signup">
 
-          <form action="" class="sign-in-form">
+          <form action="login" class="sign-in-form" method="post">
             <h2 class="title">Connexion</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -43,7 +43,7 @@
             </div>
           </form>
 
-          <form action="" class="sign-up-form">
+          <form action="inscription" class="sign-up-form"  method="post">
             <h2 class="title">Inscription</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -105,6 +105,6 @@
       </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
