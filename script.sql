@@ -99,3 +99,18 @@ CREATE TABLE elevage_HistoriqueAlimentations(
     FOREIGN KEY (idUtilisateur) REFERENCES elevage_Utilisateurs(idUtilisateur),
     FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie)
 );
+CREATE VIEW view_AnimauxAVendre AS
+SELECT 
+    a.idAnimaux,
+    a.nom AS nomAnimal,
+    a.poidsInitiale,
+    a.image,
+    c.idCategorie,
+    c.categorie AS nomCategorie,
+    c.nbjSManger,
+    c.pertePoidsj,
+    c.poidsMin,
+    c.poidsMax,
+    c.prixVente
+FROM elevage_AnimauxAchats a
+JOIN elevage_Categories c ON a.idCategorie = c.idCategorie;

@@ -12,7 +12,7 @@ class AjouterCapitalModel{
         try {
             $this->db = Flight::db();
 
-            $query = "INSERT INTO elevage_Utilisateurs(capital) VALUES ? WHERE idUtilisateurs = ?";
+            $query = "UPDATE elevage_Utilisateurs SET capital =  ? WHERE idUtilisateur = ?";
             
             $stmt = $this->db->prepare($query);
     

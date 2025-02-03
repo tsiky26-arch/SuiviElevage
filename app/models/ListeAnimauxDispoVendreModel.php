@@ -15,7 +15,7 @@ class ListeAnimauxDispoVendreModel{
             $query = "SELECT * FROM elevage_AnimauxEleve WHERE idUtilisateur= ? AND statut = ? ";
             
             $stmt = $this->db->prepare($query);
-      
+    
             $stmt->bindValue(1,$idU);
             $stmt->bindValue(2,$statut);
 
