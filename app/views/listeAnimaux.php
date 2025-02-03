@@ -1,3 +1,7 @@
+<?php
+  echo var_dump(@$animaux);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,15 +66,14 @@
 
   <main>
     <section class="cards-grid">
-            <?php foreach ($Animaux as $animal): ?>
-                <div class="card">
-                    <img src="<?= $animal['image'] ?>">
-                    <div class="card-overlay">
+            <?php foreach ($animaux as $key => $animal) { ?>
+                <!-- <div class="card"> -->
+                    <!-- <div class="card-overlay"> -->
                         <h2><?= $animal['nom'] ?></h2>
                         <p>Poids: <?= $animal['poidsInitiale'] ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                    <!-- </div> -->
+                <!-- </div> -->
+            <?php } ?>
     </section>
 </main>
 <footer>
