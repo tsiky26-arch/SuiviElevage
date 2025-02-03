@@ -5,48 +5,48 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glowing - Reveal The Beauty of Skin</title>
+  <title>FermePro - Gestion d'Élevage d'Animaux</title>
 
-  <!-- 
+  <!--
     - favicon
   -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-  <!-- 
+  <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="assets/css/acceuil.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- 
+  <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- 
+  <!--
     - preload images
   -->
-  <link rel="preload" as="image" href="./assets/images/logo.png">
-  <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-banner-3.jpg">
+  <!-- <link rel="preload" as="image" href="./assets/images/logo.png"> -->
+  <link rel="preload" as="image" href="./assets/images/farm.jpg">
+  <link rel="preload" as="image" href="./assets/images/farm1.jpg">
+  <link rel="preload" as="image" href="./assets/images/farm1.jp1g">
 
 </head>
 
 <body id="top">
 
-  <!-- 
+  <!--
     - #HEADER
   -->
 
   <header class="header">
 
-    <div class="alert">
+    <!-- <div class="alert">
       <div class="container">
-        <p class="alert-text">Free Shipping On All U.S. Orders $50+</p>
+        <p class="alert-text">Livraison gratuite sur toutes les commandes de plus de $50</p>
       </div>
-    </div>
+    </div> -->
 
     <div class="header-top" data-header>
       <div class="container">
@@ -58,33 +58,33 @@
         </button>
 
         <div class="input-wrapper">
-          <input type="search" name="search" placeholder="Search product" class="search-field">
-
+          <input type="search" name="search"  class="search-field" value="Capital">
+<!-- 
           <button class="search-submit" aria-label="search">
             <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-          </button>
+          </button> -->
         </div>
 
-        <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="179" height="26" alt="Glowing">
-        </a>
+        <!-- <a href="#" class="logo">
+          <img src="./assets/images/logo.png" width="179" height="26" alt="FermePro">
+        </a> -->
 
         <div class="header-actions">
 
-          <button class="header-action-btn" aria-label="user">
-            <ion-icon name="person-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
+          <button class="header-action-btn" aria-label="user" onclick="window.location.href='/profil'">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
           </button>
 
-          <button class="header-action-btn" aria-label="favourite item">
-            <ion-icon name="star-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
+          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='/profil'">
+            <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
             <span class="btn-badge">0</span>
           </button>
 
-          <button class="header-action-btn" aria-label="cart item">
+          <button class="header-action-btn" aria-label="cart item" onclick="window.location.href='/profil'">
             <data class="btn-text" value="0">$0.00</data>
 
-            <ion-icon name="bag-handle-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
+            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
 
             <span class="btn-badge">0</span>
           </button>
@@ -95,19 +95,19 @@
           <ul class="navbar-list">
 
             <li>
-              <a href="#home" class="navbar-link has-after">Home</a>
+              <a href="#home" class="navbar-link has-after">Accueil</a>
             </li>
 
             <li>
-              <a href="#collection" class="navbar-link has-after">Collection</a>
+              <a href="#collection" class="navbar-link has-after">Nos Animaux</a>
             </li>
 
             <li>
-              <a href="#shop" class="navbar-link has-after">Shop</a>
+              <a href="#shop" class="navbar-link has-after">Boutique</a>
             </li>
 
             <li>
-              <a href="#offer" class="navbar-link has-after">Offer</a>
+              <a href="#offer" class="navbar-link has-after">Offres</a>
             </li>
 
             <li>
@@ -122,43 +122,39 @@
 
   </header>
 
-
-
-
-
-  <!-- 
+  <!--
     - #MOBILE NAVBAR
   -->
 
   <div class="sidebar">
     <div class="mobile-navbar" data-navbar>
 
-      <div class="wrapper">
+      <!-- <div class="wrapper">
         <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="179" height="26" alt="Glowing">
+          <img src="./assets/images/logo.png" width="179" height="26" alt="FermePro">
         </a>
 
         <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
           <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
         </button>
-      </div>
+      </div> -->
 
       <ul class="navbar-list">
 
         <li>
-          <a href="#home" class="navbar-link" data-nav-link>Home</a>
+          <a href="#home" class="navbar-link" data-nav-link>Accueil</a>
         </li>
 
         <li>
-          <a href="#collection" class="navbar-link" data-nav-link>Collection</a>
+          <a href="#collection" class="navbar-link" data-nav-link>Nos Animaux</a>
         </li>
 
         <li>
-          <a href="#shop" class="navbar-link" data-nav-link>Shop</a>
+          <a href="#shop" class="navbar-link" data-nav-link>Boutique</a>
         </li>
 
         <li>
-          <a href="#offer" class="navbar-link" data-nav-link>Offer</a>
+          <a href="#offer" class="navbar-link" data-nav-link>Offres</a>
         </li>
 
         <li>
@@ -172,14 +168,10 @@
     <div class="overlay" data-nav-toggler data-overlay></div>
   </div>
 
-
-
-
-
   <main>
     <article>
 
-      <!-- 
+      <!--
         - #HERO
       -->
 
@@ -189,22 +181,22 @@
           <ul class="has-scrollbar">
 
             <li class="scrollbar-item">
-              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/hero-banner-1.jpg')">
+              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/farm.jpg')">
 
                 <div class="card-content">
 
                   <h1 class="h1 hero-title">
-                    Reveal The <br>
-                    Beauty of Skin
+                    Découvrez la Beauté <br>
+                    de l'Élevage
                   </h1>
 
                   <p class="hero-text">
-                    Made using clean, non-toxic ingredients, our products are designed for everyone.
+                    Nos animaux sont élevés avec soin et amour, dans un environnement sain et naturel.
                   </p>
 
-                  <p class="price">Starting at $7.99</p>
+                  <p class="price">À partir de $7.99</p>
 
-                  <a href="#" class="btn btn-primary">Shop Now</a>
+                  <a href="#" class="btn btn-primary">Acheter Maintenant</a>
 
                 </div>
 
@@ -212,22 +204,22 @@
             </li>
 
             <li class="scrollbar-item">
-              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/hero-banner-2.jpg')">
+              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/farm1.jpg')">
 
                 <div class="card-content">
 
                   <h1 class="h1 hero-title">
-                    Reveal The <br>
-                    Beauty of Skin
+                    Découvrez la Beauté <br>
+                    de l'Élevage
                   </h1>
 
                   <p class="hero-text">
-                    Made using clean, non-toxic ingredients, our products are designed for everyone.
+                    Nos animaux sont élevés avec soin et amour, dans un environnement sain et naturel.
                   </p>
 
-                  <p class="price">Starting at $7.99</p>
+                  <p class="price">À partir de $7.99</p>
 
-                  <a href="#" class="btn btn-primary">Shop Now</a>
+                  <a href="#" class="btn btn-primary">Acheter Maintenant</a>
 
                 </div>
 
@@ -235,22 +227,22 @@
             </li>
 
             <li class="scrollbar-item">
-              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/hero-banner-3.jpg')">
+              <div class="hero-card has-bg-image" style="background-image: url('./assets/images/farm2.jpg')">
 
                 <div class="card-content">
 
                   <h1 class="h1 hero-title">
-                    Reveal The <br>
-                    Beauty of Skin
+                    Découvrez la Beauté <br>
+                    de l'Élevage
                   </h1>
 
                   <p class="hero-text">
-                    Made using clean, non-toxic ingredients, our products are designed for everyone.
+                    Nos animaux sont élevés avec soin et amour, dans un environnement sain et naturel.
                   </p>
 
-                  <p class="price">Starting at $7.99</p>
+                  <p class="price">À partir de $7.99</p>
 
-                  <a href="#" class="btn btn-primary">Shop Now</a>
+                  <a href="#" class="btn btn-primary">Acheter Maintenant</a>
 
                 </div>
 
@@ -262,183 +254,173 @@
         </div>
       </section>
 
+      <!--
+        - #FOOTER
+      -->
 
+      <footer class="footer" data-section>
+        <div class="container">
 
-  <!-- 
-    - #FOOTER
-  -->
+          <div class="footer-top">
 
-  <footer class="footer" data-section>
-    <div class="container">
+            <ul class="footer-list">
 
-      <div class="footer-top">
+              <li>
+                <p class="footer-list-title">ETU003276</p>
+              </li>
 
-        <ul class="footer-list">
+              <li>
+                <p class="footer-list-text">
+                  Trouvez une ferme près de chez vous. Voir <a href="#" class="link">Nos Fermes</a>
+                </p>
+              </li>
 
-          <li>
-            <p class="footer-list-title">ETU003276</p>
-          </li>
+              <li>
+                <p class="footer-list-text bold">+391 (0)35 2568 4593</p>
+              </li>
 
-          <li>
-            <p class="footer-list-text">
-              Find a location nearest you. See <a href="#" class="link">Our Stores</a>
-            </p>
-          </li>
+              <li>
+                <p class="footer-list-text">contact@fermepro.com</p>
+              </li>
 
-          <li>
-            <p class="footer-list-text bold">+391 (0)35 2568 4593</p>
-          </li>
+            </ul>
 
-          <li>
-            <p class="footer-list-text">hello@domain.com</p>
-          </li>
+            <ul class="footer-list">
 
-        </ul>
+              <li>
+                <p class="footer-list-title">ETU003277</p>
+              </li>
 
-        <ul class="footer-list">
+              <li>
+                <a href="#" class="footer-link">Nouveaux Produits</a>
+              </li>
 
-          <li>
-            <p class="footer-list-title">ETU003277</p>
-          </li>
+              <li>
+                <a href="#" class="footer-link">Meilleures Ventes</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">New Products</a>
-          </li>
+              <li>
+                <a href="#" class="footer-link">Offres Groupées</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">Best Sellers</a>
-          </li>
+              <li>
+                <a href="#" class="footer-link">Carte Cadeau en Ligne</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">Bundle & Save</a>
-          </li>
+            </ul>
 
-          <li>
-            <a href="#" class="footer-link">Online Gift Card</a>
-          </li>
+            <ul class="footer-list">
 
-        </ul>
+              <li>
+                <p class="footer-list-title">ETU003372</p>
+              </li>
 
-        <ul class="footer-list">
+              <li>
+                <a href="#" class="footer-link">Démarrer un Retour</a>
+              </li>
 
-          <li>
-            <p class="footer-list-title">ETU003372</p>
-          </li>
+              <li>
+                <a href="#" class="footer-link">Contactez-Nous</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">Start a Return</a>
-          </li>
+              <li>
+                <a href="#" class="footer-link">FAQ sur la Livraison</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">Contact Us</a>
-          </li>
+              <li>
+                <a href="#" class="footer-link">Termes & Conditions</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">Shipping FAQ</a>
-          </li>
+              <li>
+                <a href="#" class="footer-link">Politique de Confidentialité</a>
+              </li>
 
-          <li>
-            <a href="#" class="footer-link">Terms & Conditions</a>
-          </li>
+            </ul>
 
-          <li>
-            <a href="#" class="footer-link">Privacy Policy</a>
-          </li>
+            <div class="footer-list">
 
-        </ul>
+              <p class="newsletter-title">Bons Emails.</p>
 
-        <div class="footer-list">
+              <p class="newsletter-text">
+                Entrez votre email ci-dessous pour être le premier informé des nouvelles collections et des lancements de produits.
+              </p>
 
-          <p class="newsletter-title">Good emails.</p>
+              <form action="" class="newsletter-form">
+                <input type="email" name="email_address" placeholder="Entrez votre adresse email" required
+                  class="email-field">
 
-          <p class="newsletter-text">
-            Enter your email below to be the first to know about new collections and product launches.
-          </p>
+                <button type="submit" class="btn btn-primary">S'abonner</button>
+              </form>
 
-          <form action="" class="newsletter-form">
-            <input type="email" name="email_address" placeholder="Enter your email address" required
-              class="email-field">
+            </div>
 
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
+          </div>
+
+          <div class="footer-bottom">
+
+            <div class="wrapper">
+              <p class="copyright">
+                &copy; 2023 FermePro
+              </p>
+
+              <ul class="social-list">
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-youtube"></ion-icon>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+            <a href="#" class="logo">
+              <img src="./assets/images/logo.png" width="179" height="26" loading="lazy" alt="FermePro">
+            </a>
+
+            <img src="./assets/images/pay.png" width="313" height="28" alt="tous les modes de paiement disponibles" class="w-100">
+
+          </div>
 
         </div>
+      </footer>
 
-      </div>
+      <!--
+        - #BACK TO TOP
+      -->
 
-      <div class="footer-bottom">
+      <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+      </a>
 
-        <div class="wrapper">
-          <p class="copyright">
-            &copy; 2022 codewithsadee
-          </p>
+      <!--
+        - custom js link
+      -->
+      <script src="./assets/js/script.js" defer></script>
 
-          <ul class="social-list">
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </a>
-            </li>
-
-          </ul>
-        </div>
-
-        <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="179" height="26" loading="lazy" alt="Glowing">
-        </a>
-
-        <img src="./assets/images/pay.png" width="313" height="28" alt="available all payment method" class="w-100">
-
-      </div>
-
-    </div>
-  </footer>
-
-
-
-
-
-  <!-- 
-    - #BACK TO TOP
-  -->
-
-  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
-  </a>
-
-
-
-
-
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js" defer></script>
-
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <!--
+        - ionicon link
+      -->
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 
