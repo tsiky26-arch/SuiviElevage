@@ -108,11 +108,12 @@ CREATE TABLE elevage_HistoriqueAlimentations(
     idUtilisateur INT,
     idCategorie INT,
     quantite DECIMAL(10,2),
-    idAliment INT ,
-    FOREIGN KEY (idAliment) REFERENCES elevage_Aliments(idAliment),
+    idAlimentation INT, -- Correction ici
+    FOREIGN KEY (idAlimentation) REFERENCES elevage_Aliments(idAlimentation), -- Correction ici
     FOREIGN KEY (idUtilisateur) REFERENCES elevage_Utilisateurs(idUtilisateur),
     FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie)
 );
+
 CREATE VIEW view_AnimauxAVendre AS
 SELECT 
     a.idAnimaux,
@@ -129,3 +130,17 @@ SELECT
     c.prixVente
 FROM elevage_AnimauxAchats a
 JOIN elevage_Categories c ON a.idCategorie = c.idCategorie;
+
+
+ALTER TABLE elevage_HistoriqueAlimentations ADD COLUMN idAlimentation INT;
+
+
+ALTER TABLE elevage_MesAliments 
+ADD COLUMN stock_initial DECIMAL(10,2) DEFAULT 0,
+ADD COLUMN quantite_restante DECIMAL(10,2) DEFAULT 0;
+
+ALTER TABLE elevage_AchatAliments 
+ADD COLUMN statut ENUM('EN_ATTENTE', 'VALIDE', 'ANNULE') DEFAULT 'VALIDE';
+
+ALTER TABLE elevage_Aliments 
+ADD COLUMN date_expiration DATE NULL;

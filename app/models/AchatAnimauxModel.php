@@ -1,8 +1,7 @@
-<?php 
-namespace app\models;
-use Flight;
+<?php
 
-class AchatAnimauxModel{
+class AlimentationModel
+{
     private $db;
 
     public function __construct() {
