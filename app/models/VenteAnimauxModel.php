@@ -34,6 +34,30 @@ class VenteAnimauxModel{
 
       return $data;
       } 
+
+      public function insertAnimauxAVendre($idU, $idCategorie, $idanimaux,$poids, $prix ){
+        try {
+          $query = "INSERT INTO elevage_AnimauxQuiPeuxEtreVendu (idUtilisateur, idCategorie, idAnimaux, poids, prix) 
+                    VALUES (?, ?, ?, ?)";
+          $stmt = $pdo->prepare($query);
+          
+          // Liaison des paramètres avec bindValue
+          $stmt->bindValue(1, $idU, PDO::PARAM_INT);  
+          $stmt->bindValue(2, $idCategorie, PDO::PARAM_INT); 
+          $stmt->bindValue(3, $idAnimaux, PDO::PARAM_INT);  
+          $stmt->bindValue(4, $poids, PDO::PARAM_DECIMAL);
+          $stmt->bindValue(1, $prix, PDO::PARAM_INT);
+          
+          if ($stmt->execute()) {
+              return " inséré avec succès.";
+          } else {
+              return "Erreur lors de l'insertion ";
+          }
+      } catch (\Exception $e) {
+          echo "Une erreur s'est produite : " . $e->getMessage();
+      }
+
+      }
 }
 
 
