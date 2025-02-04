@@ -22,7 +22,6 @@ class LoginController {
         } else {
             $_SESSION['user'] = $user;
             Flight::redirect('accueil');
-            // session_start();
             // echo 'login reussi';
         }
         // echo var_dump($user);

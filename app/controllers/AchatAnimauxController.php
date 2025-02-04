@@ -59,9 +59,7 @@ class AchatAnimauxController {
         else {
             $prixAnimalAchete = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitiale'], $animalAAcheter['prixVente']);
         }
-        if(session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        
         $user = $_SESSION['user'];
         $newInfoUser = $achatAnimauxModel->getUserById($user['idUtilisateur']);
         $ancienCapital = $newInfoUser['capital'];

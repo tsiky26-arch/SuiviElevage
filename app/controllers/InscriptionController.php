@@ -1,6 +1,5 @@
 <?php
 namespace app\controllers;
-// session_start();
 
 use Flight;
 use app\models\InscriptionModel;

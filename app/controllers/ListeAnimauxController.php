@@ -3,7 +3,6 @@ namespace app\controllers;
 
 use Flight;
 use app\models\ListeAnimauxModel;
-// session_start();
 
 class ListeAnimauxController {
     public function __construct() {
@@ -17,7 +16,7 @@ class ListeAnimauxController {
 
         $animaux = $listeAnimauxModel->getAllAnimauxById($user['idUtilisateur']);
 
-        // $user = $_SESSION['user'];
+        $user = $_SESSION['user'];
         $newInfoUser = $listeAnimauxModel->getUserById($user['idUtilisateur']);
         $ancienCapital = $newInfoUser['capital'];
 
