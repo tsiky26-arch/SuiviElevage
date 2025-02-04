@@ -13,6 +13,8 @@ use app\controllers\AjouterCapitalController;
 use app\controllers\VenteAnimauxController;
 // use app\controllers\TableauDeBordController;
 use app\controllers\TableauBordController;
+use app\controllers\TableauDeBordController;
+use app\controllers\AlimentationController;
 
 /** 
  * @var Router $router 
@@ -36,6 +38,8 @@ $listeAnimauxController = new ListeAnimauxController();
 $achatAnimauxController = new AchatAnimauxController();
 $venteAnimauxController = new VenteAnimauxController();
 $tableauDeBordController = new TableauBordController();
+// $tableauDeBordController = new TableauDeBordController();
+$alimentationController = new AlimentationController();
 
 $router->get('/', [$inscriptionController, 'afficherFormulaireInscription']);
 $router->post('/inscription', [$inscriptionController, 'ajouterUtilisateur']);

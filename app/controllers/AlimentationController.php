@@ -5,10 +5,10 @@ use Flight;
 use app\models\AlimentationModel;
 
 class AlimentationController {
-    private $model;
+    // private $model;
 
     public function __construct() {
-        $this->model = new AlimentationModel();
+        // $this->model = new AlimentationModel();
     }
 
     // Afficher le formulaire d'alimentation
@@ -18,7 +18,7 @@ class AlimentationController {
             $categories = $this->getCategories();
             
             // Passer les données nécessaires à la vue (template)
-            Flight::render('alimentation/formulaire', ['categories' => $categories]);
+            Flight::render('achatAlimentation', ['categories' => $categories]);
         } catch (Exception $e) {
             echo "Erreur lors de l'affichage du formulaire : " . $e->getMessage();
         }
@@ -27,13 +27,14 @@ class AlimentationController {
     // Soumettre le formulaire d'alimentation
     public function soumettreFormulaire() {
         try {
+            $alimentationModel = new AlimentationModel();
             // Récupérer les données du formulaire
             $quantite = Flight::request()->data->quantite;
             $categorie = Flight::request()->data->categorie;
             $date = Flight::request()->data->date;
 
             // Gérer l'alimentation des animaux en fonction des données du formulaire
-            $this->model->nourrirAnimaux();
+            $alimentationModel->nourrirAnimaux();
 
             // Afficher un message de confirmation
             Flight::flash('success', 'Les animaux ont été alimentés avec succès.');
@@ -44,10 +45,10 @@ class AlimentationController {
     }
 
     // Récupérer toutes les catégories d'animaux pour afficher dans le formulaire
-    private function getCategories() {
-        $query = "SELECT idCategorie, nom FROM elevage_Categories";
-        $stmt = Flight::db()->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function getCategories() {
+        $alimentationModel = new AlimentationModel();
+
+        $categories = $alimentationModel->getAllCategories();
+        return $categories;
     }
 }
