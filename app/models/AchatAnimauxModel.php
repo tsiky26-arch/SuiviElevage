@@ -96,24 +96,25 @@ class AchatAnimauxModel{
           }
       }
       
-      public function insertAnimauxElever($nomAnimal, $idCategorie, $poidsInitial, $idUtilisateur, $image,$statut, $etat)
+      public function insertAnimauxElever($nomAnimal, $idCategorie, $poidsInitial, $poidsVariable, $idUtilisateur, $image,$statut, $etat)
       {
         $idUtilisateur = (String) $idUtilisateur;
         $idCategorie = (String) $idCategorie;
 
           try {
             $this->db = Flight::db();
-              $query = "INSERT INTO elevage_AnimauxEleves (nom, idCategorie, poidsVariable, idUtilisateur,image,statut,etat) VALUES (?, ?, ?, ?,?,?,?)";
+              $query = "INSERT INTO elevage_AnimauxEleves (nom, idCategorie, poidsInitiale, poidsVariable, idUtilisateur,image,statut,etat) VALUES (?, ?, ?, ?, ?,?,?,?)";
               $stmt = $this->db->prepare($query);
               
               // Utilisation de bindValue avec des "?"
               $stmt->bindValue(1, $nomAnimal);   // Nom de l'animal
               $stmt->bindValue(2, $idCategorie);         // Type de l'animal
               $stmt->bindValue(3, $poidsInitial);          // Âge de l'animal
-              $stmt->bindValue(4, $idUtilisateur); // ID de l'utilisateur
-              $stmt->bindValue(5, $image); 
-              $stmt->bindValue(6, $statut); 
-              $stmt->bindValue(7, $etat); 
+              $stmt->bindValue(4, $poidsVariable);          // Âge de l'animal
+              $stmt->bindValue(5, $idUtilisateur); // ID de l'utilisateur
+              $stmt->bindValue(6, $image); 
+              $stmt->bindValue(7, $statut); 
+              $stmt->bindValue(8, $etat); 
               if ($stmt->execute()) {
                   echo "Animal inséré avec succès.";
               } else {

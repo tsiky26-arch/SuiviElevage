@@ -35,6 +35,27 @@ class VenteAnimauxModel {
       return $data;
       } 
 
+      public function getUserById($id) {
+        try {
+          $this->db = Flight::db();
+
+          $id = (String) $id;
+
+          $query = "select * from elevage_Utilisateurs WHERE idUtilisateur = ?";
+          
+          $stmt = $this->db->prepare($query);
+  
+          $stmt->bindValue(1,$id);
+
+          
+          $stmt->execute();
+          return $stmt->Fetch(\PDO::FETCH_ASSOC);
+          
+      } catch (\Exception $e) {
+          echo "une erreur c'est produite" .$e->getMessage();
+      }
+      }
+
       public function insertAnimauxAVendre($idU, $idCategorie, $idanimaux,$poids, $prix ){
         try {
           $query = "INSERT INTO elevage_AnimauxQuiPeuxEtreVendu (idUtilisateur, idCategorie, idAnimaux, poids, prix) 
@@ -84,6 +105,27 @@ class VenteAnimauxModel {
       }
 
       return $data;
+      }
+
+      public function getPoidsMinByIdCategorie($idCategorie) {
+        try {
+            $this->db = Flight::db();
+  
+            $idCategorie = (String) $idCategorie;
+  
+            $query = "select poidsMin from elevage_Categories WHERE idCategorie = ?";
+            
+            $stmt = $this->db->prepare($query);
+    
+            $stmt->bindValue(1,$idCategorie);
+  
+            
+            $stmt->execute();
+            return $stmt->Fetch(\PDO::FETCH_ASSOC);
+            
+        } catch (\Exception $e) {
+            echo "une erreur c'est produite" .$e->getMessage();
+        }
       }
 }
 

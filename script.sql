@@ -7,7 +7,7 @@ CREATE TABLE elevage_Utilisateurs(
     nom VARCHAR(200),
     email VARCHAR(200),
     motDePasse VARCHAR(200),
-    capital INT 
+    capital INT DEFAULT 0 
 );
 
 CREATE TABLE elevage_Categories(
