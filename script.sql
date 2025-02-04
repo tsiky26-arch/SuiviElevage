@@ -17,6 +17,7 @@ CREATE TABLE elevage_Categories (
     pertePoidsj INT,
     poidsMin INT,
     poidsMax INT,
+    quota DECIMAL(10,2),
     prixVente INT
 );
 
@@ -80,6 +81,7 @@ CREATE TABLE elevage_Aliments (
     prix INT,
     idCategorie INT,
     nom VARCHAR(200),
+    gain DECIMAL(10,2),
     date_expiration DATE NULL,
     FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie)
 );

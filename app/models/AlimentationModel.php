@@ -8,13 +8,12 @@ use Flight;
       
 class AlimentationModel {
     private $db;
-    
     public function __construct() {
-        $this->db = Flight::db();
     }
     
     public function nourrirAnimaux() {
         try {
+            $this->db = Flight::db();
             // Récupérer les animaux non vendus
             $query = "SELECT a.idAnimaux, a.poidsVariable, c.idCategorie, c.poidsMin, c.prixVente, c.pertePoidsj, c.nbjSManger,
                              c.poidsMax, ma.stock, ma.idAlimentation, al.nom AS nomAliment, al.prix
@@ -25,7 +24,7 @@ class AlimentationModel {
                       WHERE a.statut = 'ELEVE' AND a.etat = 'VIVANT'";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
-            $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $animaux = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             
             foreach ($animaux as $animal) {
                 $quota = $this->getQuotaAlimentaire($animal['idCategorie']);
@@ -56,44 +55,99 @@ class AlimentationModel {
         }
     }
     
-    private function getQuotaAlimentaire($idCategorie) {
+    public function getQuotaAlimentaire($idCategorie) {
+        try {
+            //code...
+            $this->db = Flight::db();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $query = "SELECT quota FROM elevage_Categories WHERE idCategorie = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$idCategorie]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $result ? $result['quota'] : 0;
     }
     
-    private function getGainAlimentaire($idAlimentation) {
+    public function getGainAlimentaire($idAlimentation) {
+        try {
+            $this->db = Flight::db();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $query = "SELECT gain FROM elevage_Aliments WHERE idAlimentation = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$idAlimentation]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $result ? $result['gain'] : 0;
     }
     
-    private function updatePoidsAnimal($idAnimaux, $poids) {
+    public function updatePoidsAnimal($idAnimaux, $poids) {
+        try {
+            $this->db = Flight::db();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $query = "UPDATE elevage_AnimauxEleves SET poidsVariable = ? WHERE idAnimaux = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$poids, $idAnimaux]);
     }
     
-    private function updateStockAliment($idAlimentation, $nouveauStock) {
+    public function updateStockAliment($idAlimentation, $nouveauStock) {
+        try {
+            $this->db = Flight::db();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $query = "UPDATE elevage_MesAliments SET stock = ? WHERE idAlimentation = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$nouveauStock, $idAlimentation]);
     }
     
-    private function setAnimalMort($idAnimaux) {
+    public function setAnimalMort($idAnimaux) {
+        try {
+            $this->db = Flight::db();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $query = "UPDATE elevage_AnimauxEleves SET etat = 'MORT' WHERE idAnimaux = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$idAnimaux]);
     }
     
-    private function logAlimentation($idAnimaux, $quantite, $idAliment) {
+    public function logAlimentation($idAnimaux, $quantite, $idAliment) {
+        try {
+            $this->db = Flight::db();
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $query = "INSERT INTO elevage_HistoriqueAlimentations (date, idAnimaux, quantite, idAliment) VALUES (NOW(), ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$idAnimaux, $quantite, $idAliment]);
+    }
+
+    public function getAllCategories() {
+        try {
+            $this->db = Flight::db();
+           
+            $query = "SELECT * FROM elevage_Categories" ;
+            
+            $stmt = $this->db->prepare($query);
+      
+            
+            $stmt->execute();
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            
+            return $data;
+        } catch (\Exception $e) {
+            echo "une erreur c'est produite" .$e->getMessage();
+        }
     }
 }
 

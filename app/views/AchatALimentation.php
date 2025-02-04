@@ -16,7 +16,7 @@
             </div>
         <?php endif; ?>
 
-        <form method="POST" action="soumettre_formulaire.php">
+        <form method="POST" action="">
             <div class="form-group mb-3">
                 <label for="quantite">Quantité d'Aliment (en kg)</label>
                 <input type="number" class="form-control" id="quantite" name="quantite" required>
@@ -27,7 +27,7 @@
                 <select class="form-control" id="categorie" name="categorie" required>
                     <option value="">Sélectionnez une catégorie</option>
                     <?php foreach ($categories as $categorie) : ?>
-                        <option value="<?php echo $categorie['idCategorie']; ?>"><?php echo $categorie['nom']; ?></option>
+                        <option value="<?php echo $categorie['idCategorie']; ?>"><?php echo $categorie['categorie']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
