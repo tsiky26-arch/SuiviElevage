@@ -11,7 +11,8 @@ use app\controllers\AchatAnimauxController;
 use app\controllers\ListeAnimauxController;
 use app\controllers\AjouterCapitalController;
 use app\controllers\VenteAnimauxController;
-use app\controllers\TableauDeBordController;
+// use app\controllers\TableauDeBordController;
+use app\controllers\TableauBordController;
 
 /** 
  * @var Router $router 
@@ -34,7 +35,7 @@ $ajouterCapitalController = new AjouterCapitalController();
 $listeAnimauxController = new ListeAnimauxController();
 $achatAnimauxController = new AchatAnimauxController();
 $venteAnimauxController = new VenteAnimauxController();
-$tableauDeBordController = new TableauDeBordController();
+$tableauDeBordController = new TableauBordController();
 
 $router->get('/', [$inscriptionController, 'afficherFormulaireInscription']);
 $router->post('/inscription', [$inscriptionController, 'ajouterUtilisateur']);
@@ -52,9 +53,11 @@ $router->get('/achatAnimaux', [$achatAnimauxController, 'handleRequest']);
 
 $router->get('/venteAnimaux', [$venteAnimauxController, 'handleRequest']);
 
-$router->get('/tableauDeBord', [$tableauDeBordController, 'afficherFormulaire']);
+// $router->get('/tableauDeBord', [$tableauDeBordController, 'afficherFormulaire']);
 
+$router->post('/tableauDeBord', [$tableauDeBordController, 'getDataByDate']);
 
+// Flight::route('POST /get-data', [new TableauBordController(), 'getDataByDate']);
 
 
 
