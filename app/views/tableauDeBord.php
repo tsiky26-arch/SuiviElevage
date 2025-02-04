@@ -13,7 +13,9 @@
     <header>
         <div class="navbar">
             <h1>Gestion d'Élevage</h1>
-            <input type="date" id="dateInput" />
+            <form action="" method="get">
+                <input type="date" id="dateInput" name="date" />
+            </form>
             <button id="showDataBtn">Afficher les données</button>
             <nav>
                 <ul>
@@ -90,8 +92,8 @@
                     return;
                 }
                 $.ajax({
-                    url: "/tableaubord/getData",
-                    method: "POST",
+                    url: "/tableauDeBord",
+                    method: "GET",
                     data: { date: selectedDate },
                     success: function (response) {
                         $("#capital").text(response.capital || "Non disponible");

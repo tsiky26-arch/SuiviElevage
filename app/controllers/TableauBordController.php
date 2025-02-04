@@ -5,10 +5,21 @@ use Flight;
 use app\models\TableauBordModel;
 
 class TableauBordController {
+
+    public function __construct()
+    {
+        
+    }
+
+    public function afficherFormulaire(){
+        Flight::render('tableauDeBord');
+    }
+
     public function getDataByDate() {
         // Récupérer la date envoyée par la requête POST
-        $date = Flight::request()->data->date;
-        $idUtilisateur = Flight::request()->data->idUtilisateur;  // Utilisateur qui fait la demande (par exemple)
+        $date = $_GET['date'];
+        $user = $_SESSION['user'];  // Utilisateur qui fait la demande (par exemple)
+        $idUtilisateur = $user['idUtilisateur'];  // Utilisateur qui fait la demande (par exemple)
 
         // Créer une instance du modèle TableauBordModel
         $model = new TableauBordModel();

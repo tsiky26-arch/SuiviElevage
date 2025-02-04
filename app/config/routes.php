@@ -57,9 +57,9 @@ $router->get('/achatAnimaux', [$achatAnimauxController, 'handleRequest']);
 
 $router->get('/venteAnimaux', [$venteAnimauxController, 'handleRequest']);
 
-// $router->get('/tableauDeBord', [$tableauDeBordController, 'afficherFormulaire']);
+$router->get('/tableauDeBord', [$tableauDeBordController, 'afficherFormulaire']);
 
-$router->post('/tableauDeBord', [$tableauDeBordController, 'getDataByDate']);
+$router->get('/tableauDeBord', [$tableauDeBordController, 'getDataByDate']);
 
 // Flight::route('POST /get-data', [new TableauBordController(), 'getDataByDate']);
 
