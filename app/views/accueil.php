@@ -77,8 +77,6 @@
           <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'"> <p>Ajouter Capital</p>
             <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
-            <!-- <span class="btn-badge">0</span> -->
-          </button>
 
 
         </div>
@@ -111,6 +109,9 @@
             </li>
 
             
+            <li>
+            <a href="crudAnimaux" class="navbar-link has-after">Type Animal</a>
+            </li>
 
           </ul>
         </nav>

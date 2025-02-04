@@ -12,6 +12,8 @@
     <header>
         <div class="navbar">
             <h1>Gestion d'Élevage</h1>
+            <input type="date" id="dateInput" />
+            <button id="showDataBtn">Afficher les données</button>
             <nav>
                 <ul>
                     <li><a href="#dashboard">Tableau de Bord</a></li>
@@ -22,7 +24,8 @@
             </nav>
         </div>
     </header>
-    <main>
+
+    <main id="mainContent" style="display: none;">
         <section id="dashboard" class="container">
             <h2>📊 Tableau de Bord</h2>
             <div class="grid">
@@ -106,7 +109,42 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Gestion d'Élevage | Tous droits réservés</p>
+        <p>&copy; ETU003276 ETU003277 ETU003372</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateInput = document.getElementById("dateInput");
+            const showDataBtn = document.getElementById("showDataBtn");
+            const mainContent = document.getElementById("mainContent");
+
+            // Fonction pour afficher/masquer le contenu en fonction de la date sélectionnée
+            const toggleSectionsByDate = () => {
+                const selectedDate = dateInput.value;
+                
+                // Vérifie si une date a été sélectionnée
+                if (!selectedDate) {
+                    alert("Veuillez sélectionner une date.");
+                    return;
+                }
+
+                // Convertir la date en format Date pour comparaison
+                const selectedDateObj = new Date(selectedDate);
+                const today = new Date();
+
+                // Si la date sélectionnée est aujourd'hui, on affiche les sections
+                if (selectedDateObj.toDateString() === today.toDateString()) {
+                    mainContent.style.display = "block";  // Affiche le contenu
+                } else {
+                    // Masque le contenu si la date ne correspond pas à aujourd'hui
+                    mainContent.style.display = "none";
+                    alert("Aucune donnée disponible pour cette date.");
+                }
+            };
+
+            // Ajouter l'événement pour afficher les données après sélection de la date
+            showDataBtn.addEventListener("click", toggleSectionsByDate);
+        });
+    </script>
 </body>
 </html>
