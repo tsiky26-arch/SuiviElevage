@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/tableauDeBord.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="assets/js/tableauDeBord.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -29,26 +30,11 @@
         <section id="dashboard" class="container">
             <h2>📊 Tableau de Bord</h2>
             <div class="grid">
-                <div class="card">
-                    <h3>💰 Capital Actuel</h3>
-                    <p id="capital">1500 €</p>
-                </div>
-                <div class="card">
-                    <h3>🐄 Nombre Total d'Animaux</h3>
-                    <p id="totalAnimaux">120</p>
-                </div>
-                <div class="card">
-                    <h3>✅ Vivants / ☠️ Morts</h3>
-                    <p id="etatAnimaux">110 / 10</p>
-                </div>
-                <div class="card">
-                    <h3>💲 Prêts à Vendre</h3>
-                    <p id="pretVente">15</p>
-                </div>
-                <div class="card alert" id="stockAlert">
-                    <h3>🌽 Stock d’Aliments</h3>
-                    <p id="stockAliments">50 kg</p>
-                </div>
+                <div class="card"><h3>💰 Capital Actuel</h3><p id="capital">...</p></div>
+                <div class="card"><h3>🐄 Nombre Total d'Animaux</h3><p id="totalAnimaux">...</p></div>
+                <div class="card"><h3>✅ Vivants / ☠️ Morts</h3><p id="etatAnimaux">...</p></div>
+                <div class="card"><h3>💲 Prêts à Vendre</h3><p id="pretVente">...</p></div>
+                <div class="card alert" id="stockAlert"><h3>🌽 Stock d’Aliments</h3><p id="stockAliments">...</p></div>
             </div>
         </section>
 
@@ -66,17 +52,7 @@
                         <th>Prix estimé</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="poulet.jpg" alt="Poulet" class="animal-img"></td>
-                        <td>Poulet 1</td>
-                        <td>2.5 kg</td>
-                        <td class="statut ready">🟡 Prêt à vendre</td>
-                        <td>Poulet</td>
-                        <td>01/01/2024</td>
-                        <td>15€</td>
-                    </tr>
-                </tbody>
+                <tbody id="animalTableBody"></tbody>
             </table>
         </section>
 
@@ -91,14 +67,7 @@
                         <th>Prévision d'épuisement</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Maïs</td>
-                        <td class="alert">5 kg</td>
-                        <td>10 kg</td>
-                        <td>⚠️ 0.5 jour</td>
-                    </tr>
-                </tbody>
+                <tbody id="stockTableBody"></tbody>
             </table>
         </section>
 
@@ -113,37 +82,65 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const dateInput = document.getElementById("dateInput");
-            const showDataBtn = document.getElementById("showDataBtn");
-            const mainContent = document.getElementById("mainContent");
-
-            // Fonction pour afficher/masquer le contenu en fonction de la date sélectionnée
-            const toggleSectionsByDate = () => {
-                const selectedDate = dateInput.value;
-                
-                // Vérifie si une date a été sélectionnée
+        $(document).ready(function () {
+            $("#showDataBtn").click(function () {
+                const selectedDate = $("#dateInput").val();
                 if (!selectedDate) {
                     alert("Veuillez sélectionner une date.");
                     return;
                 }
+                $.ajax({
+                    url: "/tableaubord/getData",
+                    method: "POST",
+                    data: { date: selectedDate },
+                    success: function (response) {
+                        $("#capital").text(response.capital || "Non disponible");
+                        $("#totalAnimaux").text(response.totalAnimaux || "Non disponible");
+                        $("#etatAnimaux").text(`${response.vivants} / ${response.morts}` || "Non disponible");
+                        $("#pretVente").text(response.pretVente || "Non disponible");
+                        $("#stockAliments").text(response.stockAliments || "Non disponible");
+                        populateAnimalTable(response.animaux);
+                        populateStockTable(response.stock);
+                        $("#mainContent").show();
+                    },
+                    error: function () {
+                        alert("Erreur lors de la récupération des données.");
+                    }
+                });
+            });
 
-                // Convertir la date en format Date pour comparaison
-                const selectedDateObj = new Date(selectedDate);
-                const today = new Date();
+            function populateAnimalTable(animaux) {
+                let tbody = $("#animalTableBody");
+                tbody.empty();
+                animaux.forEach(animal => {
+                    tbody.append(`
+                        <tr>
+                            <td><img src="${animal.image}" alt="${animal.nom}" class="animal-img"></td>
+                            <td>${animal.nom}</td>
+                            <td>${animal.poids} kg</td>
+                            <td>${animal.statut}</td>
+                            <td>${animal.categorie}</td>
+                            <td>${animal.dateAchat}</td>
+                            <td>${animal.prixEstime}€</td>
+                        </tr>
+                    `);
+                });
+            }
 
-                // Si la date sélectionnée est aujourd'hui, on affiche les sections
-                if (selectedDateObj.toDateString() === today.toDateString()) {
-                    mainContent.style.display = "block";  // Affiche le contenu
-                } else {
-                    // Masque le contenu si la date ne correspond pas à aujourd'hui
-                    mainContent.style.display = "none";
-                    alert("Aucune donnée disponible pour cette date.");
-                }
-            };
-
-            // Ajouter l'événement pour afficher les données après sélection de la date
-            showDataBtn.addEventListener("click", toggleSectionsByDate);
+            function populateStockTable(stock) {
+                let tbody = $("#stockTableBody");
+                tbody.empty();
+                stock.forEach(item => {
+                    tbody.append(`
+                        <tr>
+                            <td>${item.type}</td>
+                            <td class="alert">${item.stockRestant} kg</td>
+                            <td>${item.consoParJour} kg</td>
+                            <td>⚠️ ${item.previsionEpuisement} jours</td>
+                        </tr>
+                    `);
+                });
+            }
         });
     </script>
 </body>
