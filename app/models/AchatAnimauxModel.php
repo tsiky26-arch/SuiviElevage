@@ -8,6 +8,7 @@ class AchatAnimauxModel{
     public function __construct() {
         
     }
+
       public  function getAllAnimauxAVendre(){
         try {
             $this->db = Flight::db();
@@ -18,17 +19,40 @@ class AchatAnimauxModel{
       
             
             $stmt->execute();
+            $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             
+            return $data;
         } catch (\Exception $e) {
             echo "une erreur c'est produite" .$e->getMessage();
         }
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
       } 
+
+      public function getAnimalAVendreById($idAnimal) {
+        try {
+            $this->db = Flight::db();
+           
+            $query = "SELECT * FROM view_AnimauxAVendre where idAnimaux = ?" ;
+            
+            $stmt = $this->db->prepare($query);
+      
+            $stmt->bindValue(1, $idAnimal, \PDO::PARAM_INT);
+            
+            $stmt->execute();
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+            
+            return $data;
+        } catch (\Exception $e) {
+            echo "une erreur c'est produite" .$e->getMessage();
+        }
+      }
+
       public function updateCapital($montant, $idU)
       {
           try {
               $query = "UPDATE elevage_Utilisateurs SET capital = capital + ? WHERE idUtilisateur = ?";
               $stmt = $pdo->prepare($query);
+
+              $idU = (String) $idU;
               
               // Utilisation de bindValue avec des "?"
               $stmt->bindValue(1, $montant, \PDO::PARAM_INT);
