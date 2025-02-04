@@ -39,7 +39,7 @@ class AchatAlimentationModel{
         $stmt->bindValue(2, $date, PDO::PARAM_STR);  // Date d'achat
         $stmt->bindValue(3, $idUtilisateur, PDO::PARAM_INT);  // ID de l'utilisateur
         $stmt->bindValue(4, $quantite, PDO::PARAM_DECIMAL);  // Montant de l'achat
-        $stmt->bindValue(1, $idCategorie, PDO::PARAM_INT);
+        $stmt->bindValue(5, $idCategorie, PDO::PARAM_INT);
         
         if ($stmt->execute()) {
             return "Historique d'achat inséré avec succès.";
