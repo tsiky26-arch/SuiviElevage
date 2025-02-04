@@ -1,8 +1,8 @@
 <?php
 namespace app\controllers;
 
-use app\models\AlimentationModel;
 use Flight;
+use app\models\AlimentationModel;
 
 class AlimentationController {
     private $model;
@@ -11,85 +11,43 @@ class AlimentationController {
         $this->model = new AlimentationModel();
     }
 
-    // Page pour nourrir les animaux et afficher un message
-    public function nourrirAnimaux() {
+    // Afficher le formulaire d'alimentation
+    public function afficherFormulaire() {
         try {
+            // Récupérer les catégories d'animaux pour afficher dans le formulaire
+            $categories = $this->getCategories();
+            
+            // Passer les données nécessaires à la vue (template)
+            Flight::render('alimentation/formulaire', ['categories' => $categories]);
+        } catch (Exception $e) {
+            echo "Erreur lors de l'affichage du formulaire : " . $e->getMessage();
+        }
+    }
+
+    // Soumettre le formulaire d'alimentation
+    public function soumettreFormulaire() {
+        try {
+            // Récupérer les données du formulaire
+            $quantite = Flight::request()->data->quantite;
+            $categorie = Flight::request()->data->categorie;
+            $date = Flight::request()->data->date;
+
+            // Gérer l'alimentation des animaux en fonction des données du formulaire
             $this->model->nourrirAnimaux();
-            Flight::render('alimentation/nourrir', ['message' => "L'alimentation automatique a été effectuée avec succès."]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/nourrir', ['error' => "Une erreur s'est produite : " . $e->getMessage()]);
+
+            // Afficher un message de confirmation
+            Flight::flash('success', 'Les animaux ont été alimentés avec succès.');
+            Flight::redirect('/alimentation/formulaire');
+        } catch (Exception $e) {
+            echo "Erreur lors de la soumission du formulaire : " . $e->getMessage();
         }
     }
 
-    // Afficher le quota alimentaire d'une catégorie
-    public function getQuotaAlimentaire($idCategorie) {
-        try {
-            $quota = $this->model->getQuotaAlimentaire($idCategorie);
-            Flight::render('alimentation/quota', ['idCategorie' => $idCategorie, 'quota' => $quota]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/quota', ['error' => "Erreur lors de la récupération du quota."]);
-        }
-    }
-
-    // Afficher le gain alimentaire d'un aliment
-    public function getGainAlimentaire($idAlimentation) {
-        try {
-            $gain = $this->model->getGainAlimentaire($idAlimentation);
-            Flight::render('alimentation/gain', ['idAlimentation' => $idAlimentation, 'gain' => $gain]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/gain', ['error' => "Erreur lors de la récupération du gain alimentaire."]);
-        }
-    }
-
-    // Mettre à jour le poids d'un animal
-    public function updatePoidsAnimal() {
-        $idAnimaux = Flight::request()->data->idAnimaux;
-        $poids = Flight::request()->data->poids;
-        
-        try {
-            $this->model->updatePoidsAnimal($idAnimaux, $poids);
-            Flight::render('alimentation/updatePoids', ['message' => "Poids de l'animal mis à jour avec succès."]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/updatePoids', ['error' => "Erreur lors de la mise à jour du poids."]);
-        }
-    }
-
-    // Mettre à jour le stock d'un aliment
-    public function updateStockAliment() {
-        $idAlimentation = Flight::request()->data->idAlimentation;
-        $nouveauStock = Flight::request()->data->nouveauStock;
-
-        try {
-            $this->model->updateStockAliment($idAlimentation, $nouveauStock);
-            Flight::render('alimentation/updateStock', ['message' => "Stock mis à jour avec succès."]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/updateStock', ['error' => "Erreur lors de la mise à jour du stock."]);
-        }
-    }
-
-    // Marquer un animal comme mort
-    public function setAnimalMort() {
-        $idAnimaux = Flight::request()->data->idAnimaux;
-
-        try {
-            $this->model->setAnimalMort($idAnimaux);
-            Flight::render('alimentation/mort', ['message' => "L'animal a été marqué comme mort."]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/mort', ['error' => "Erreur lors du changement d'état de l'animal."]);
-        }
-    }
-
-    // Enregistrer une alimentation dans l'historique
-    public function logAlimentation() {
-        $idAnimaux = Flight::request()->data->idAnimaux;
-        $quantite = Flight::request()->data->quantite;
-        $idAliment = Flight::request()->data->idAliment;
-
-        try {
-            $this->model->logAlimentation($idAnimaux, $quantite, $idAliment);
-            Flight::render('alimentation/log', ['message' => "Historique d'alimentation enregistré avec succès."]);
-        } catch (\Exception $e) {
-            Flight::render('alimentation/log', ['error' => "Erreur lors de l'enregistrement de l'alimentation."]);
-        }
+    // Récupérer toutes les catégories d'animaux pour afficher dans le formulaire
+    private function getCategories() {
+        $query = "SELECT idCategorie, nom FROM elevage_Categories";
+        $stmt = Flight::db()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
