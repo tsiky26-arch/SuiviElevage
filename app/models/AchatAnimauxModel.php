@@ -1,6 +1,9 @@
 <?php
+namespace app\models;
 
-class AlimentationModel
+use Flight;
+
+class AchatAnimauxModel
 {
     private $db;
 
