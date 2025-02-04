@@ -14,7 +14,7 @@ class AjouterCapitalModel{
 
             $idU = (String) $idU;
 
-            $query = "UPDATE elevage_Utilisateurs SET capital =  ? WHERE idUtilisateur = ?";
+            $query = "UPDATE elevage_Utilisateurs SET capital = capital + ? WHERE idUtilisateur = ?";
             
             $stmt = $this->db->prepare($query);
     

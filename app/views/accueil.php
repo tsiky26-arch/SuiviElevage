@@ -57,7 +57,7 @@
         </button>
 
         <div class="input-wrapper">
-          <input type="search" name="search"  class="search-field" value="Capital">
+          <!-- <input type="search" name="search"  class="search-field" value="Capital"> -->
 <!-- 
           <button class="search-submit" aria-label="search">
             <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
@@ -74,7 +74,7 @@
             <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
           </button> -->
 
-          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
+          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'"> Ajouter Capital
             <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
             <!-- <span class="btn-badge">0</span> -->
@@ -107,6 +107,10 @@
 
             <li>
             <a href="venteAnimaux" class="navbar-link has-after">Ventes</a>
+            </li>
+
+            <li>
+            <a href="deconnexion" class="navbar-link has-after">Deconnexion</a>
             </li>
 
             

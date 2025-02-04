@@ -104,15 +104,19 @@
   <header class="header">
     <nav class="navbar">
       <ul class="navbar-list">
-        <li><a href="#home" class="navbar-link">Accueil</a></li>
+        <li><a href="listeAnimaux" class="navbar-link">Liste de mes animaux</a></li>
         <li><a href="achatAliment" class="navbar-link">Achat Aliment</a></li>
         <li><a href="achatAnimaux" class="navbar-link">Achats</a></li>
         <li><a href="venteAnimaux" class="navbar-link">Ventes</a></li>
-      </ul>
-    </nav>
-  </header>
-    <div class="container">
-        <div class="products">
+        <li><a href="ajoutCapital" class="navbar-link">Ajouter capital</a></li>
+        <li><a href="deconnexion" class="navbar-link">Deconnexion</a></li>
+
+    </ul>
+</nav>
+</header>
+<div class="container">
+    <p>Votre capital : <?= $capital ?>Ar</p>
+    <div class="products">
             <?php if(isset($animauxQuiPeuventEtreVendu) && isset($prixTotal)) { ?>
                 <?php for ($i = 0; $i<count($animauxQuiPeuventEtreVendu); $i++) { ?>
                     <div class="card">
