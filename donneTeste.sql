@@ -55,3 +55,8 @@ INSERT INTO elevage_HistoriqueAlimentations (date, idUtilisateur, idCategorie, q
 ('2025-02-01', 1, 1, 1.50, 1),
 ('2025-02-02', 2, 2, 2.00, 2),
 ('2025-02-03', 3, 3, 5.00, 3);
+
+
+update elevage_Categories set quota = 1 where idCategorie = 1;
+update elevage_Categories set quota = 1.5 where idCategorie = 2;
+update elevage_Categories set quota = 0.5 where idCategorie = 3;

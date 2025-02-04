@@ -65,9 +65,12 @@ class AlimentationModel {
         }
         $query = "SELECT quota FROM elevage_Categories WHERE idCategorie = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->execute([$idCategorie]);
+        $stmt->bindValue(1,$idCategorie);
+        $stmt->execute();
+        // $stmt->execute([$idCategorie]);
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $result ? $result['quota'] : 0;
+        // return $result;
     }
     
     public function getGainAlimentaire($idAlimentation) {
