@@ -24,10 +24,10 @@ INSERT INTO elevage_HistoriquePoids (date, idAnimaux, poidsAjouter, poidsNouveau
 ('2025-02-03', 4, 3, 25);
 
 -- Insérer des animaux à vendre
-INSERT INTO elevage_AnimauxAchats (idCategorie, nom, poidsInitiale, image) VALUES
-(1, 'Poussin 3', 1.2, 'assets/img/Volaille/Poules/téléchargement (2).jpeg'),
-(2, 'Canard 2', 2.5, 'assets/img/Volaille/Canards/téléchargement (1).jpeg'),
-(3, 'Porc 2', 12, 'assets/img/Mammifere/Cochon/porc2.jpg');
+INSERT INTO elevage_AnimauxAchats (idCategorie, nom, poidsInitiale, poidsVariable, image) VALUES
+(1, 'Poussin 3', 1.2, 1.2, 'assets/img/Volaille/Poules/téléchargement (2).jpeg'),
+(2, 'Canard 2', 2.5, 2.5, 'assets/img/Volaille/Canards/téléchargement (1).jpeg'),
+(3, 'Porc 2', 12, 12, 'assets/img/Mammifere/Cochon/porc2.jpg');
 
 -- Insérer des historiques d’achats d’animaux
 INSERT INTO elevage_HistoriqueAchats (idAnimaux, dateAchat, idUtilisateur, montant) VALUES
@@ -36,25 +36,25 @@ INSERT INTO elevage_HistoriqueAchats (idAnimaux, dateAchat, idUtilisateur, monta
 (3, '2025-01-15', 3, 20000);
 
 -- Insérer des aliments
-INSERT INTO elevage_Aliments (prix, idCategorie, nom) VALUES
-(500, 1, 'Graines de maïs'),
-(700, 2, 'Granulés pour canards'),
-(1500, 3, 'Farine de maïs');
+INSERT INTO elevage_Aliments (prix, idCategorie, nom, date_expiration) VALUES
+(500, 1, 'Graines de maïs', '2025-06-01'),
+(700, 2, 'Granulés pour canards', '2025-07-01'),
+(1500, 3, 'Farine de maïs', '2025-08-01');
 
 -- Insérer des achats d’aliments
-INSERT INTO elevage_AchatAliments (idAlimentation, dateAchat, idUtilisateur, montant, quantite) VALUES
-(1, '2025-01-20', 1, 5000, 10),
-(2, '2025-01-21', 2, 7000, 5),
-(3, '2025-01-22', 3, 15000, 10);
+INSERT INTO elevage_AchatAliments (idAlimentation, dateAchat, idUtilisateur, montant, quantite, statut) VALUES
+(1, '2025-01-20', 1, 5000, 10, 'VALIDE'),
+(2, '2025-01-21', 2, 7000, 5, 'VALIDE'),
+(3, '2025-01-22', 3, 15000, 10, 'VALIDE');
 
 -- Insérer les stocks d’aliments des utilisateurs
-INSERT INTO elevage_MesAliments (idAlimentation, stock, idUtilisateur) VALUES
-(1, 8, 1),
-(2, 4, 2),
-(3, 9, 3);
+INSERT INTO elevage_MesAliments (idAlimentation, stock, idUtilisateur, stock_initial, quantite_restante) VALUES
+(1, 8, 1, 10, 8),
+(2, 4, 2, 5, 4),
+(3, 9, 3, 10, 9);
 
 -- Insérer des historiques d’alimentation des animaux
-INSERT INTO elevage_HistoriqueAlimentations (date, idUtilisateur, idCategorie, quantite) VALUES
-('2025-02-01', 1, 1, 1.5),
-('2025-02-02', 2, 2, 2.0),
-('2025-02-03', 3, 3, 5.0);
+INSERT INTO elevage_HistoriqueAlimentations (date, idUtilisateur, idCategorie, quantite, idAlimentation) VALUES
+('2025-02-01', 1, 1, 1.5, 1),
+('2025-02-02', 2, 2, 2.0, 2),
+('2025-02-03', 3, 3, 5.0, 3);

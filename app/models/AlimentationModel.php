@@ -2,88 +2,101 @@
 namespace app\models;
 use Flight;
 
-class AchatAlimentationModel{
+
+
+
+      
+class AlimentationModel {
     private $db;
-
-    public function __construct() {
-        
-    }
-      public  function getAllCategorie(){
-        try {
-            $this->db = Flight::db();
-           
-            $query = "SELECT * FROM elevage_Categories" ;
-            
-            $stmt = $this->db->prepare($query);
-      
-            
-            $stmt->execute();
-            
-        } catch (\Exception $e) {
-            echo "une erreur c'est produite" .$e->getMessage();
-        }
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-      } 
-
-      
     
-      public function insertHistoriqueAlimentation($idAliment, $date, $idUtilisateur, $quantite, $idCategorie)
-{
-    try {
-        $query = "INSERT INTO elevage_HistoriqueAlimentations (idAliment, date, idUtilisateur, quantite, idCategorie) 
-                  VALUES (?, ?, ?, ?)";
-        $stmt = $pdo->prepare($query);
-        
-        // Liaison des paramètres avec bindValue
-        $stmt->bindValue(1, $idAliment, PDO::PARAM_INT);  // ID de l'animal acheté
-        $stmt->bindValue(2, $date, PDO::PARAM_STR);  // Date d'achat
-        $stmt->bindValue(3, $idUtilisateur, PDO::PARAM_INT);  // ID de l'utilisateur
-        $stmt->bindValue(4, $quantite, PDO::PARAM_DECIMAL);  // Montant de l'achat
-        $stmt->bindValue(5, $idCategorie, PDO::PARAM_INT);
-        
-        if ($stmt->execute()) {
-            return "Historique d'achat inséré avec succès.";
-        } else {
-            return "Erreur lors de l'insertion de l'historique d'achat.";
+    public function __construct() {
+        $this->db = Flight::db();
+    }
+    
+    public function nourrirAnimaux() {
+        try {
+            // Récupérer les animaux non vendus
+            $query = "SELECT a.idAnimaux, a.poidsVariable, c.idCategorie, c.poidsMin, c.prixVente, c.pertePoidsj, c.nbjSManger,
+                             c.poidsMax, ma.stock, ma.idAlimentation, al.nom AS nomAliment, al.prix
+                      FROM elevage_AnimauxEleves a
+                      JOIN elevage_Categories c ON a.idCategorie = c.idCategorie
+                      LEFT JOIN elevage_MesAliments ma ON c.idCategorie = ma.idAlimentation
+                      LEFT JOIN elevage_Aliments al ON ma.idAlimentation = al.idAlimentation
+                      WHERE a.statut = 'ELEVE' AND a.etat = 'VIVANT'";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($animaux as $animal) {
+                $quota = $this->getQuotaAlimentaire($animal['idCategorie']);
+                if ($animal['stock'] >= $quota) {
+                    // Mise à jour du poids de l'animal
+                    $nouveauPoids = min($animal['poidsVariable'] + ($quota * $this->getGainAlimentaire($animal['idAlimentation'])), $animal['poidsMax']);
+                    $this->updatePoidsAnimal($animal['idAnimaux'], $nouveauPoids);
+                    
+                    // Mise à jour du stock d'alimentation
+                    $this->updateStockAliment($animal['idAlimentation'], $animal['stock'] - $quota);
+                    
+                    // Enregistrement de l'historique d'alimentation
+                    $this->logAlimentation($animal['idAnimaux'], $quota, $animal['idAlimentation']);
+                } else {
+                    // Gérer la perte de poids si l'animal n'est pas nourri
+                    $poidsPerdu = $animal['poidsVariable'] * ($animal['pertePoidsj'] / 100);
+                    $nouveauPoids = max($animal['poidsVariable'] - $poidsPerdu, 0);
+                    $this->updatePoidsAnimal($animal['idAnimaux'], $nouveauPoids);
+                    
+                    // Vérifier si l'animal meurt de faim
+                    if ($nouveauPoids <= 0) {
+                        $this->setAnimalMort($animal['idAnimaux']);
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            echo "Erreur lors de l'alimentation automatique : " . $e->getMessage();
         }
-    } catch (\Exception $e) {
-        echo "Une erreur s'est produite : " . $e->getMessage();
+    }
+    
+    private function getQuotaAlimentaire($idCategorie) {
+        $query = "SELECT quota FROM elevage_Categories WHERE idCategorie = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idCategorie]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['quota'] : 0;
+    }
+    
+    private function getGainAlimentaire($idAlimentation) {
+        $query = "SELECT gain FROM elevage_Aliments WHERE idAlimentation = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idAlimentation]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['gain'] : 0;
+    }
+    
+    private function updatePoidsAnimal($idAnimaux, $poids) {
+        $query = "UPDATE elevage_AnimauxEleves SET poidsVariable = ? WHERE idAnimaux = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$poids, $idAnimaux]);
+    }
+    
+    private function updateStockAliment($idAlimentation, $nouveauStock) {
+        $query = "UPDATE elevage_MesAliments SET stock = ? WHERE idAlimentation = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$nouveauStock, $idAlimentation]);
+    }
+    
+    private function setAnimalMort($idAnimaux) {
+        $query = "UPDATE elevage_AnimauxEleves SET etat = 'MORT' WHERE idAnimaux = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idAnimaux]);
+    }
+    
+    private function logAlimentation($idAnimaux, $quantite, $idAliment) {
+        $query = "INSERT INTO elevage_HistoriqueAlimentations (date, idAnimaux, quantite, idAliment) VALUES (NOW(), ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idAnimaux, $quantite, $idAliment]);
     }
 }
 
-public function updateStock($idAlimentation, $idUtilisateur, $quantite)
-{
-    $idU = (String) $idUtilisateur;
-
-
-    try {
-        // Requête pour mettre à jour le stock d'aliments
-        $query = "UPDATE elevage_MesAliments
-                  SET stock = stock - ? 
-                  WHERE idAlimentation = ? AND idUtilisateur = ?";
-        $stmt = $pdo->prepare($query);
-        
-        // Liaison des paramètres avec bindValue
-        $stmt->bindValue(1, $quantite );  // Quantité à ajouter
-        $stmt->bindValue(2, $idAlimentation );  // ID de l'aliment
-        $stmt->bindValue(3, $idU);  // ID de l'utilisateur
-        
-        // Exécution de la requête
-        if ($stmt->execute()) {
-            return "Stock mis à jour avec succès.";
-        } else {
-            return "Erreur lors de la mise à jour du stock.";
-        }
-    } catch (\Exception $e) {
-        echo "Une erreur s'est produite : " . $e->getMessage();
-    }
-
-
-}
-
-
-      
-}
 
 
 
