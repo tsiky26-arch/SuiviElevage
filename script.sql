@@ -42,12 +42,24 @@ CREATE TABLE elevage_HistoriquePoids(
     poidsNouveau DECIMAL(10,2),
     FOREIGN KEY (idAnimaux) REFERENCES elevage_AnimauxEleves(idAnimaux)
 );
+CREATE TABLE elevage_AnimauxQuiPeuxEtreVendu(
+    idAnimauxVendre INT AUTO_INCREMENT PRIMARY KEY,
+    idCategorie INT,
+    idAnimaux INT,
+    idUtilisateur INT,
+    poids DECIMAL(10,2),
+    prix INT,
+    FOREIGN KEY (idAnimaux) REFERENCES elevage_AnimauxEleves(idAnimaux),
+    FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie),
+    FOREIGN KEY (idUtilisateur) REFERENCES elevage_Utilisateurs(idUtilisateur)
+);
 
 CREATE TABLE elevage_AnimauxAchats(
     idAnimaux INT AUTO_INCREMENT PRIMARY KEY,
     idCategorie INT,
     nom VARCHAR(200),
     poidsInitiale DECIMAL(10,2),
+    poidsVariable DECIMAL(10,2),
     image VARCHAR(200),
     FOREIGN KEY (idCategorie) REFERENCES elevage_Categories(idCategorie)
 );
@@ -107,6 +119,7 @@ SELECT
     a.nom AS nomAnimal,
     a.poidsInitiale,
     a.image,
+    a.poidsVariable,
     c.idCategorie,
     c.categorie AS nomCategorie,
     c.nbjSManger,
