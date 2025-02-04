@@ -2,7 +2,7 @@
 namespace app\models;
 use Flight;
 
-class ListeAnimauxDispoVendreModel{
+class VenteAnimauxModel {
     private $db;
 
     public function __construct() {

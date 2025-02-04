@@ -10,7 +10,7 @@ use app\controllers\InscriptionController;
 use app\controllers\AchatAnimauxController;
 use app\controllers\ListeAnimauxController;
 use app\controllers\AjouterCapitalController;
-// use app\controllers\VenteAnimauxController;
+use app\controllers\VenteAnimauxController;
 
 /** 
  * @var Router $router 
@@ -32,7 +32,7 @@ $accueilController = new AccueilController();
 $ajouterCapitalController = new AjouterCapitalController();
 $listeAnimauxController = new ListeAnimauxController();
 $achatAnimauxController = new AchatAnimauxController();
-// $venteAnimauxController = new VenteAnimauxController();
+$venteAnimauxController = new VenteAnimauxController();
 
 $router->get('/', [$inscriptionController, 'afficherFormulaireInscription']);
 $router->post('/inscription', [$inscriptionController, 'ajouterUtilisateur']);
@@ -48,7 +48,7 @@ $router->get('/listeAnimaux', [$listeAnimauxController, 'listerAnimaux']);
 $router->get('/achatAnimaux', [$achatAnimauxController, 'handleRequest']);
 // $router->get('/achatAnimaux?action=acheter', [$achatAnimauxController, 'ajouterAnimalEleve']);
 
-// $router->get('/venteAnimaux', [$venteAnimauxController, 'ajouterAnimalEleve']);
+$router->get('/venteAnimaux', [$venteAnimauxController, 'handleRequest']);
 
 
 

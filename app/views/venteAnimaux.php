@@ -113,7 +113,7 @@
   </header>
     <div class="container">
         <div class="products">
-        <?php foreach ($animaux as $animal): ?>
+        <?php foreach ($animauxAVendre as $animal): ?>
             <div class="product">
                 <form action="" method="post">
                     <img src="assets/images/banner-1.jpg" alt="Product 1">
