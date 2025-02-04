@@ -14,21 +14,10 @@
 <body>
     <nav class="navbar">
         <ul class="navbar-list">
-            <li>
-                <a href="#home" class="navbar-link" data-nav-link>Accueil</a>
-            </li>
-            <li>
-                <a href="#collection" class="navbar-link" data-nav-link>Nos Animaux</a>
-            </li>
-            <li>
-                <a href="#shop" class="navbar-link" data-nav-link>Boutique</a>
-            </li>
-            <li>
-                <a href="#offer" class="navbar-link" data-nav-link>Offres</a>
-            </li>
-            <li>
-                <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-            </li>
+            <li><a href="#home" class="navbar-link" data-nav-link>Accueil</a></li>
+            <li><a href="achatAliment" class="navbar-link"data-nav-link>Achat Aliment</a></li>
+            <li><a href="achatAnimaux" class="navbar-link"data-nav-link>Achats</a></li>
+            <li><a href="venteAnimaux" class="navbar-link"data-nav-link>Ventes</a></li>
         </ul>
         <a href="#" class="add-button" onclick="openModal('add')">
             <i class="fas fa-plus"></i> Ajouter
