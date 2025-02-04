@@ -24,7 +24,7 @@
         </a>
     </nav>
     <div class="container">
-        <h1>Gestion d'Élevage d'Animaux</h1>
+        <h1>Type Animal</h1>
         <table>
             <thead>
                 <tr>
@@ -44,7 +44,7 @@
                     <td>2</td>
                     <td>5%</td>
                     <td class="actions">
-                        <button class="btn btn-modify" onclick="openModal('modify')">Modifier</button>
+                        <button class="btn btn-modify" onclick="openModal('modifier')">Modifier</button>
                         <form action="/supprimer" method="post">
                             <button type="submit" class="btn btn-delete">Supprimer</button>
                         </form>
@@ -59,7 +59,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">Ajouter un Animal</h2>
+                <h2 id="modalTitle">Ajouter un espece</h2>
                 <span class="close" onclick="closeModal()">&times;</span>
             </div>
             <div class="modal-body">
@@ -91,8 +91,8 @@
     <script>
         function openModal(action) {
             document.getElementById('modal').style.display = 'block';
-            document.getElementById('modalTitle').innerText = action.charAt(0).toUpperCase() + action.slice(1) + " un Animal";
-            // Vous pouvez ajouter des logiques spécifiques pour 'add' ou 'modify' ici
+            document.getElementById('modalTitle').innerText = action.charAt(0).toUpperCase() + action.slice(1) + " un espece";
+            // Vous pouvez ajouter des logiques spécifiques pour 'add' ou 'modifier' ici
         }
 
         function closeModal() {

@@ -19,6 +19,41 @@ header {
     font-weight: 600;
 }
 
+/* Style pour le champ de sélection de date */
+input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #34495e;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+/* Effet au survol du champ de sélection de date */
+input[type="date"]:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+/* Style pour le bouton "Afficher les données" */
+button#showDataBtn {
+    padding: 10px 20px;
+    background-color: #1abc9c;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Effet au survol du bouton */
+button#showDataBtn:hover {
+    background-color: #16a085;
+}
+
+
 .navbar {
     display: flex;
     justify-content: space-between;

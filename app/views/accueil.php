@@ -57,7 +57,7 @@
         </button>
 
         <div class="input-wrapper">
-          <input type="search" name="search"  class="search-field" value="Capital">
+          <!-- <input type="search" name="search"  class="search-field" value="Capital"> -->
 <!-- 
           <button class="search-submit" aria-label="search">
             <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
@@ -74,19 +74,17 @@
             <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
           </button> -->
 
-          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
-            <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
+          <form action="#" method="post">
+            <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
+                <p>Capital</p>
+                <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
+  
+              <!-- <span class="btn-badge">0</span> -->
+            </button>
+          </form>
 
-            <!-- <span class="btn-badge">0</span> -->
-          </button>
 
-          <button class="header-action-btn" aria-label="cart item" onclick="window.location.href='/profil'">
-            <!-- <data class="btn-text" value="0">$0.00</data> -->
-
-            <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-
-            <!-- <span class="btn-badge">0</span> -->
-          </button>
+          
 
         </div>
 
@@ -109,7 +107,13 @@
             <a href="venteAnimaux" class="navbar-link has-after">Ventes</a>
             </li>
 
+            <li>
+            <a href="tableauDeBord" class="navbar-link has-after">Tableau de bord</a>
+            </li>
             
+            <li>
+            <a href="crudAnimaux" class="navbar-link has-after">Type Animal</a>
+            </li>
 
           </ul>
         </nav>
