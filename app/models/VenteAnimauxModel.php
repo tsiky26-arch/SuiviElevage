@@ -2,23 +2,21 @@
 namespace app\models;
 use Flight;
 
-class ListeAnimauxDispoVendreModel{
+class VenteAnimauxModel{
     private $db;
 
     public function __construct() {
         
     }
-      public  function listeDispoAVendre($idU){
+      public  function getAllAnimauxElever($idU){
         try {
             $this->db = Flight::db();
-            $statut = 'vendu';
             $idU = (String) $idU;
-            $query = "SELECT * FROM elevage_AnimauxEleve WHERE idUtilisateur= ? AND statut = ? ";
+            $query = "SELECT * FROM elevage_AnimauxEleve WHERE idUtilisateur= ? ";
             
             $stmt = $this->db->prepare($query);
     
             $stmt->bindValue(1,$idU);
-            $stmt->bindValue(2,$statut);
 
             
             $stmt->execute();
@@ -26,6 +24,15 @@ class ListeAnimauxDispoVendreModel{
         } catch (\Exception $e) {
             echo "une erreur c'est produite" .$e->getMessage();
         }
+        if($this->db != null) {
+
+          $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+      }
+      else {
+          echo "une erreur c'est produite";
+      }
+
+      return $data;
       } 
 }
 

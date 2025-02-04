@@ -25,9 +25,9 @@ INSERT INTO elevage_HistoriquePoids (date, idAnimaux, poidsAjouter, poidsNouveau
 
 -- Insérer des animaux à vendre
 INSERT INTO elevage_AnimauxAchats (idCategorie, nom, poidsInitiale, image) VALUES
-(1, 'Poussin 3', 1.2, 'poussin3.jpg'),
-(2, 'Canard 2', 2.5, 'canard2.jpg'),
-(3, 'Porc 2', 12, 'porc2.jpg');
+(1, 'Poussin 3', 1.2, '/assets/img/Volaille/Poules/téléchargement (2).jpeg'),
+(2, 'Canard 2', 2.5, '/assets/img/Volaille/Canards/téléchargement (1).jpeg'),
+(3, 'Porc 2', 12, '/assets/img/Mammifere/Cochon/porc2.jpg');
 
 -- Insérer des historiques d’achats d’animaux
 INSERT INTO elevage_HistoriqueAchats (idAnimaux, dateAchat, idUtilisateur, montant) VALUES
