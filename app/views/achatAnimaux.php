@@ -44,11 +44,11 @@
         <div class="card">
           <img src="<?= $animauxAAcheter[$i]['image'] ?>" alt="Image de <?= $animauxAAcheter[$i]['nomAnimal'] ?>">
           <div class="card-overlay">
-            <h2><?= $animauxAAcheter[$i]['nomAnimal'] ?></h2>
-            <h2><?= $prixTotal[$i] ?></h2>
+            <h4><?= $animauxAAcheter[$i]['nomAnimal'] ?></h4>
+            <!-- <h2><?= $prixTotal[$i] ?></h2> -->
             <div class="card-details">
-              <!-- <p class="details-item">Poids total: <?= $animauxAAcheter[$i]['nomAnimal'] ?> kg</p> -->
-              <p class="details-item">Prix total: <?= $prixTotal[$i] ?>Ar</p>
+              <p class="details-item">Poids total: <?php if($animauxAAcheter[$i]['poidsVariable'] != NULL) {echo $animauxAAcheter[$i]['poidsVariable'];} else {echo $animauxAAcheter[$i]['poidsInitiale'];}  ?>kg</p>
+              <p class="details-item">Prix total: <?= $prixTotal[$i] ?>€</p>
             </div>
             <a href="?action=acheter&idAnimalAAcheter=<?= $animauxAAcheter[$i]['idAnimaux'] ?>" class="btn-acheter">Acheter</a>
           </div>
