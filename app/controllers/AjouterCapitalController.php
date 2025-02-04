@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use Flight;
 use app\models\AjouterCapitalModel;
+// session_start();
 
 class AjouterCapitalController {
     public function __construct() {
