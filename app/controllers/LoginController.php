@@ -3,7 +3,6 @@ namespace app\controllers;
 
 use Flight;
 use app\models\LoginModel;
-// session_start();
 
 class LoginController {
     public function __construct() {

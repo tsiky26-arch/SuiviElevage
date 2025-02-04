@@ -74,17 +74,10 @@
             <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
           </button> -->
 
-          <form action="#" method="post">
-            <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
-                <p>Capital</p>
-                <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
-  
-              <!-- <span class="btn-badge">0</span> -->
-            </button>
-          </form>
+          <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'"> <p>Ajouter Capital</p>
+            <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
 
-          
 
         </div>
 
@@ -110,6 +103,11 @@
             <li>
             <a href="tableauDeBord" class="navbar-link has-after">Tableau de bord</a>
             </li>
+
+            <li>
+            <a href="deconnexion" class="navbar-link has-after">Deconnexion</a>
+            </li>
+
             
             <li>
             <a href="crudAnimaux" class="navbar-link has-after">Type Animal</a>

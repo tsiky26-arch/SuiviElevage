@@ -40,6 +40,27 @@ class ListeAnimauxModel{
         return $data;
     }
 
+    public function getUserById($id) {
+        try {
+          $this->db = Flight::db();
+
+          $id = (String) $id;
+
+          $query = "select * from elevage_Utilisateurs WHERE idUtilisateur = ?";
+          
+          $stmt = $this->db->prepare($query);
+  
+          $stmt->bindValue(1,$id);
+
+          
+          $stmt->execute();
+          return $stmt->Fetch(\PDO::FETCH_ASSOC);
+          
+      } catch (\Exception $e) {
+          echo "une erreur c'est produite" .$e->getMessage();
+      }
+      }
+
 }
 
 
