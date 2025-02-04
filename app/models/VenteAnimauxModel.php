@@ -12,7 +12,7 @@ class VenteAnimauxModel {
         try {
             $this->db = Flight::db();
             $idU = (String) $idU;
-            $query = "SELECT * FROM elevage_AnimauxEleve WHERE idUtilisateur= ? ";
+            $query = "SELECT * FROM elevage_AnimauxEleves WHERE idUtilisateur= ? ";
             
             $stmt = $this->db->prepare($query);
     
@@ -57,6 +57,33 @@ class VenteAnimauxModel {
           echo "Une erreur s'est produite : " . $e->getMessage();
       }
 
+      }
+
+      public  function getAllAnimauxQuiPeuxEtreVendu($idU){
+        try {
+            $this->db = Flight::db();
+            $idU = (String) $idU;
+            $query = "SELECT * FROM elevage_AnimauxQuiPeuxEtreVendu";
+            
+            $stmt = $this->db->prepare($query);
+    
+            // $stmt->bindValue(1,$idU);
+
+            
+            $stmt->execute();
+            
+        } catch (\Exception $e) {
+            echo "une erreur c'est produite" .$e->getMessage();
+        }
+        if($this->db != null) {
+
+          $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+      }
+      else {
+          echo "une erreur c'est produite";
+      }
+
+      return $data;
       }
 }
 

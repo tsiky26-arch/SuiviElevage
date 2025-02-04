@@ -47,7 +47,7 @@
             <h2><?= $animauxAAcheter[$i]['nomAnimal'] ?></h2>
             <h2><?= $prixTotal[$i] ?></h2>
             <div class="card-details">
-              <p class="details-item">Poids total: <?= $animauxAAcheter[$i]['poidsInitiale'] ?>kg</p>
+              <p class="details-item">Poids total: <?php if($animauxAAcheter[$i]['poidsVariable'] != NULL) {echo $animauxAAcheter[$i]['poidsVariable'];} else {echo $animauxAAcheter[$i]['poidsInitiale'];}  ?>kg</p>
               <p class="details-item">Prix total: <?= $prixTotal[$i] ?>€</p>
             </div>
             <a href="?action=acheter&idAnimalAAcheter=<?= $animauxAAcheter[$i]['idAnimaux'] ?>" class="btn-acheter">Acheter</a>

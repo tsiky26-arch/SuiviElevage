@@ -20,8 +20,15 @@ class AchatAnimauxController {
 
         $animauxAAcheter = $achatAnimauxModel->getAllAnimauxAVendre();
 
-        foreach ($animauxAAcheter as $key => $animalAAcheter) {
-            $prixTotal[] = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitiale'], $animalAAcheter['prixVente']);
+        if($animauxAAcheter[0]['poidsVariable'] != NULL) {
+            foreach ($animauxAAcheter as $key => $animalAAcheter) {
+                $prixTotal[] = $this->calculerPrixTotalAnimal($animalAAcheter['poidsVariable'], $animalAAcheter['prixVente']);
+            }
+        } 
+        else {
+            foreach ($animauxAAcheter as $key => $animalAAcheter) {
+                $prixTotal[] = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitiale'], $animalAAcheter['prixVente']);
+            }
         }
 
         Flight::render('achatAnimaux', ['animauxAAcheter' => $animauxAAcheter, 'prixTotal' => $prixTotal]);
@@ -41,7 +48,13 @@ class AchatAnimauxController {
         $achatAnimauxModel = new AchatAnimauxModel();
 
         $animalAAcheter = $achatAnimauxModel->getAnimalAVendreById($_GET['idAnimalAAcheter']);
-        $prixAnimalAchete = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitiale'], $animalAAcheter['prixVente']);
+
+        if($animalAAcheter['poidsVariable'] != NULL) {
+            $prixAnimalAchete = $this->calculerPrixTotalAnimal($animalAAcheter['poidsVariable'], $animalAAcheter['prixVente']);
+        }
+        else {
+            $prixAnimalAchete = $this->calculerPrixTotalAnimal($animalAAcheter['poidsInitiale'], $animalAAcheter['prixVente']);
+        }
         $user = $_SESSION['user'];
         $newInfoUser = $achatAnimauxModel->getUserById($user['idUtilisateur']);
         $ancienCapital = $newInfoUser['capital'];
@@ -59,7 +72,7 @@ class AchatAnimauxController {
             echo 'solde est suffisant pour effectuer cet achat';
             $nouveauCapital = $this->calculerNouveauCapital($ancienCapital, $prixAnimalAchete);
             $achatAnimauxModel->updateCapital($nouveauCapital, $user['idUtilisateur']);
-            $achatAnimauxModel->insertAnimauxElever($animalAAcheter['nomAnimal'], $animalAAcheter['idCategorie'], $animalAAcheter['poidsInitiale'], $user['idUtilisateur'], $animalAAcheter['image'],'ELEVE', 'VIVANT');
+            $achatAnimauxModel->insertAnimauxElever($animalAAcheter['nomAnimal'], $animalAAcheter['idCategorie'], $animalAAcheter['poidsVariable'], $user['idUtilisateur'], $animalAAcheter['image'],'ELEVE', 'VIVANT');
             $dateAchat = new \DateTime();
             $achatAnimauxModel->insertHistoriqueAchatAnimaux($animalAAcheter['idAnimaux'], $dateAchat->format('Y,m,d'), $user['idUtilisateur'], $prixAnimalAchete);
             // Flight::render('achatAnimaux', ['succes' => 'Votre achat a ete effectue avec succes']);

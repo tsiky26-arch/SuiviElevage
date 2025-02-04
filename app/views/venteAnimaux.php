@@ -113,19 +113,24 @@
   </header>
     <div class="container">
         <div class="products">
-        <?php foreach ($animauxAVendre as $animal): ?>
-            <div class="product">
-                <form action="" method="post">
-                    <img src="assets/images/banner-1.jpg" alt="Product 1">
-                    <div class="price">Poids Actuel:<?= $animal['image'] ?></div>
-                    <div class="name">Rendement Total:<?= $animal['image'] ?></div>
-                    <div class="name">Rendement:<?= $animal['image'] ?></div>
-                    <!-- <div class="reviews">★★★★★ 170 reviews</div> -->
-                    <button class="sell-button">Vendre</button>
-                </form>
-            </div>
-        </div>
-      <?php endforeach; ?>
+            <?php if(isset($animauxQuiPeuventEtreVendu) && isset($prixTotal)) { ?>
+                <?php for ($i = 0; $i<count($animauxQuiPeuventEtreVendu); $i++) { ?>
+                    <div class="card">
+                      <img src="<?= $animauxQuiPeuventEtreVendu[$i]['image'] ?>" alt="Image de <?= $animauxQuiPeuventEtreVendu[$i]['nomAnimal'] ?>">
+                      <div class="card-overlay">
+                        <h2><?= $animauxQuiPeuventEtreVendu[$i]['nomAnimal'] ?></h2>
+                        <h2><?= $prixTotal[$i] ?></h2>
+                        <div class="card-details">
+                          <p class="details-item">Poids total: <?= $animauxQuiPeuventEtreVendu[$i]['poidsVariable'] ?>kg</p>
+                          <p class="details-item">Prix total: <?= $prixTotal[$i] ?>€</p>
+                        </div>
+                        <a href="?action=vendre&idAnimalAVendre=<?= $animauxQuiPeuventEtreVendu[$i]['idAnimaux'] ?>" class="btn-acheter">Vendre</a>
+                      </div>
+                    </div>
+                <?php } ?>
+            <?php } else if (isset($message)) { ?>
+                <p><?= $message ?></p>
+            <?php } ?>
     </div>
 
     <footer>
