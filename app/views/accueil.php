@@ -77,15 +77,15 @@
           <button class="header-action-btn" aria-label="favourite item" onclick="window.location.href='ajoutCapital'">
             <ion-icon name="wallet-outline" aria-hidden="true"></ion-icon>
 
-            <span class="btn-badge">0</span>
+            <!-- <span class="btn-badge">0</span> -->
           </button>
 
           <button class="header-action-btn" aria-label="cart item" onclick="window.location.href='/profil'">
-            <data class="btn-text" value="0">$0.00</data>
+            <!-- <data class="btn-text" value="0">$0.00</data> -->
 
             <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
 
-            <span class="btn-badge">0</span>
+            <!-- <span class="btn-badge">0</span> -->
           </button>
 
         </div>
