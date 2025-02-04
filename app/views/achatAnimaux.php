@@ -1,6 +1,8 @@
 <?php
   @$animauxAAcheter;
   @$prixTotal;
+  @$erreur;
+  @$succes;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,19 +38,22 @@
 
   <main>
     <section class="cards-grid">
-      <?php foreach ($animaux as $animal): ?>
+      <p style = "color:red"><?= @$erreur ?></p>
+      <p style = "color:red"><?= @$succes ?></p>
+      <?php for ($i = 0; $i<count($animauxAAcheter); $i++) { ?>
         <div class="card">
-          <img src="<?= $animal['image'] ?>" alt="Image de <?= $animal['nom'] ?>">
+          <img src="<?= $animauxAAcheter[$i]['image'] ?>" alt="Image de <?= $animauxAAcheter[$i]['nomAnimal'] ?>">
           <div class="card-overlay">
-            <h2><?= $animal['nom'] ?></h2>
+            <h2><?= $animauxAAcheter[$i]['nomAnimal'] ?></h2>
+            <h2><?= $prixTotal[$i] ?></h2>
             <div class="card-details">
               <p class="details-item">Poids total: kg</p>
               <p class="details-item">Prix total: €</p>
             </div>
-            <a href="" class="btn-acheter">Acheter</a>
+            <a href="?action=acheter&idAnimalAAcheter=<?= $animauxAAcheter[$i]['idAnimaux'] ?>" class="btn-acheter">Acheter</a>
           </div>
         </div>
-      <?php endforeach; ?>
+      <?php } ?>
     </section>
   </main>
 
