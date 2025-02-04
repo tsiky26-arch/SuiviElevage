@@ -18,7 +18,7 @@ class AjouterCapitalController {
 
         $user = $_SESSION['user'];
 
-        $ajouterCapitalModel->addCapital($user['idUtilisateur'], $_GET['montant']);
+        $ajouterCapitalModel->addCapital($user['idUtilisateur'], $_GET['montant'], $_GET['date']);
         echo 'montant ajouté : ' . $_GET['montant'];
         Flight::redirect('listeAnimaux');
     }

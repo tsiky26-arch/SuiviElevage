@@ -78,8 +78,9 @@ class AchatAnimauxController {
             // echo 'solde est suffisant pour effectuer cet achat';
             $nouveauCapital = $this->calculerNouveauCapital($ancienCapital, $prixAnimalAchete);
             $achatAnimauxModel->updateCapital($nouveauCapital, $user['idUtilisateur']);
-            $achatAnimauxModel->insertAnimauxElever($animalAAcheter['nomAnimal'], $animalAAcheter['idCategorie'], $animalAAcheter['poidsInitiale'], $animalAAcheter['poidsInitiale'], $user['idUtilisateur'], $animalAAcheter['image'],'ELEVE', 'VIVANT');
             $dateAchat = new \DateTime();
+            $achatAnimauxModel->updateCapitalHistorique($user['idUtilisateur'], $nouveauCapital, $dateAchat->format('Y,m,d'));
+            $achatAnimauxModel->insertAnimauxElever($animalAAcheter['nomAnimal'], $animalAAcheter['idCategorie'], $animalAAcheter['poidsInitiale'], $animalAAcheter['poidsInitiale'], $user['idUtilisateur'], $animalAAcheter['image'],'ELEVE', 'VIVANT');
             $achatAnimauxModel->insertHistoriqueAchatAnimaux($animalAAcheter['idAnimaux'], $dateAchat->format('Y,m,d'), $user['idUtilisateur'], $prixAnimalAchete);
             // Flight::render('achatAnimaux', ['succes' => 'Votre achat a ete effectue avec succes']);
             $this->listerAnimauxAAcheter();

@@ -20,6 +20,10 @@
                     <input type="text" id="montant" name="montant" required>
                 </div>
                 <div class="form-group">
+                    <label for="montant">Montant :</label>
+                    <input type="date" id="montant" name="date" required>
+                </div>
+                <div class="form-group">
                     <input type="submit" value="VALIDER">
                 </div>
             </form>
